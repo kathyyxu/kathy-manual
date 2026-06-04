@@ -1,14 +1,16 @@
-# Kathy Manual - dpl_1VpMHC5JX6aGAVzmnLo4XSDNFQ6H (May 3 2026 best version)
+# Kathy Manual — Exact May 3 2026 dpl_1VpMHC5JX6aGAVzmnLo4XSDNFQ6H
 
-This is the exact source corresponding to the Vercel deployment dpl_1VpMHC5JX6aGAVzmnLo4XSDNFQ6H from May 3, 2026 15:30.
+This is the **precise source** from the Vercel deployment dpl_1VpMHC5JX6aGAVzmnLo4XSDNFQ6H (May 3, 2026 15:30:40).
 
-- Lovable / Codex generated React + shadcn + neon cyber purple-red style
-- Pre the later static red-black-white experiments
-- This was considered the best version by the user
+- User downloaded via Cmd+S "Webpage, Complete" from the live preview of that dpl.
+- Source HTML copied from "View Page Source" of the preview.
+- Assets copied from the downloaded _files folder.
+- Pure static red-black-white brutalist zine design (the "best" version the user identified).
 
-Source copied from historical Codex export around that date.
+Pushed to GitHub main so Vercel can redeploy this exact state.
 
-Pushed to restore the main repo and trigger Vercel to this state.
+**To redeploy on Vercel:**
+- Push already done (or manual Redeploy latest commit).
+- Ensure project settings: Framework = Other/None, Build = empty, Output = "."
 
-See backups for other versions.
-Restored to dpl_1VpMHC5JX6aGAVzmnLo4XSDNFQ6H (May 3 best version) on 2026年 6月 4日 星期四 15時13分45秒 HKT
+All previous experiments backed up in sibling *-backup folders.

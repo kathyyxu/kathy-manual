@@ -1,26 +1,1795 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KATHY | 多重宇宙 · 无限游戏</title>
-    <meta name="description" content="Kathy — 同时活在四个平行宇宙里的叛逆者。热血泰拳、跨境创业、播客主持、金融策略。" />
-    <meta name="author" content="Kathy" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-    <meta property="og:title" content="KATHY | 多重宇宙 · 无限游戏" />
-    <meta property="og:description" content="同时活在四个平行宇宙里的叛逆者。" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>Kathy Manual</title>
+    <style>
+      :root {
+        --bg: #070707;
+        --bg-strong: #111111;
+        --paper: rgba(255, 255, 255, 0.96);
+        --paper-strong: rgba(255, 255, 255, 1);
+        --ink: #050505;
+        --muted: #575757;
+        --accent: #e70012;
+        --accent-soft: #ff5964;
+        --line: rgba(0, 0, 0, 0.18);
+        --shadow: 0 20px 0 #000000, 0 30px 60px rgba(0, 0, 0, 0.4);
+        --radius-xl: 0px;
+        --radius-lg: 0px;
+        --radius-md: 0px;
+        --max: 1220px;
+      }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: #ffffff;
+        font-family: "Arial Black", "Avenir Next Condensed", "PingFang SC",
+          "Hiragino Sans GB", sans-serif;
+        background:
+          radial-gradient(circle at 18% 12%, rgba(231, 0, 18, 0.22), transparent 16%),
+          radial-gradient(circle at 86% 24%, rgba(231, 0, 18, 0.16), transparent 18%),
+          linear-gradient(135deg, #050505 0%, #111111 35%, #050505 100%);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.12) 14%, transparent 16%) 0 0 / 14px 14px,
+          linear-gradient(115deg, transparent 0 42%, rgba(231, 0, 18, 0.16) 42% 54%, transparent 54% 100%);
+        mix-blend-mode: screen;
+        opacity: 0.36;
+      }
+
+      body::after {
+        content: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(var(--max), calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 20px 0 90px;
+        position: relative;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 16px;
+        z-index: 20;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        padding: 14px 18px;
+        margin-bottom: 20px;
+        background: #ffffff;
+        border: 4px solid #000000;
+        border-radius: 0;
+        box-shadow: 10px 10px 0 #000000;
+        transform: skew(-12deg);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        color: #000000;
+        text-transform: uppercase;
+        transform: skew(12deg);
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 0;
+        background: var(--accent);
+        color: #ffffff;
+        border: 3px solid #000000;
+        font-family: "Arial Black", sans-serif;
+        transform: rotate(-12deg);
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 14px;
+        transform: skew(12deg);
+      }
+
+      .topbar-right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .nav a {
+        padding: 8px 12px;
+        border-radius: 0;
+        color: #111111;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+        transition: 180ms ease;
+      }
+
+      .nav a:hover {
+        background: #000000;
+        color: #ffffff;
+      }
+
+      .lang-switcher {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px;
+        background: #000000;
+        border: 3px solid #ffffff;
+        box-shadow: 6px 6px 0 var(--accent);
+        transform: skew(12deg) rotate(-3deg);
+      }
+
+      .lang-btn {
+        min-width: 42px;
+        padding: 8px 10px;
+        border: 2px solid #000000;
+        background: #ffffff;
+        color: #000000;
+        font-family: "Arial Black", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+      }
+
+      .lang-btn:hover {
+        transform: translate(-2px, -2px);
+      }
+
+      .lang-btn.active {
+        background: var(--accent);
+        color: #ffffff;
+        box-shadow: 4px 4px 0 #ffffff;
+      }
+
+      .hero {
+        position: relative;
+        overflow: visible;
+        padding: 42px;
+        border-radius: 0;
+        background:
+          linear-gradient(160deg, #ffffff 0 62%, #e70012 62% 100%);
+        border: 5px solid #000000;
+        box-shadow: 14px 14px 0 #000000;
+        clip-path: polygon(0 0, 92% 0, 100% 12%, 100% 100%, 8% 100%, 0 88%);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 48%;
+        height: 120%;
+        right: -10%;
+        top: -10%;
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.25) 14%, transparent 15%) 0 0 / 16px 16px,
+          linear-gradient(180deg, transparent 0 40%, rgba(0, 0, 0, 0.22) 40% 100%);
+        transform: skew(-22deg) rotate(8deg);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -8% -4% auto 34%;
+        height: 72%;
+        background:
+          repeating-linear-gradient(
+            -64deg,
+            rgba(0, 0, 0, 0.95) 0 16px,
+            rgba(255, 255, 255, 0) 16px 34px
+          );
+        mix-blend-mode: multiply;
+        opacity: 0.16;
+        transform: skew(-12deg);
+        pointer-events: none;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        background: #000000;
+        border-radius: 0;
+        color: #ffffff;
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: 3px solid #000000;
+        transform: rotate(-2deg);
+        box-shadow: 6px 6px 0 var(--accent);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 0.92fr 1.34fr;
+        gap: 10px;
+        align-items: end;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-grid > div:first-child {
+        transform: skew(-4deg);
+        min-width: 0;
+      }
+
+      .hero-grid > div:first-child > * {
+        transform: skew(4deg);
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      .hero h1 {
+        margin-top: 18px;
+        max-width: 10ch;
+        font-family: "Arial Black", "Impact", sans-serif;
+        font-size: clamp(3.3rem, 8.5vw, 7rem);
+        line-height: 0.88;
+        letter-spacing: -0.08em;
+        text-transform: uppercase;
+        color: #000000;
+        text-shadow: 4px 4px 0 #ffffff, 8px 8px 0 var(--accent);
+      }
+
+      .hero p {
+        max-width: 58ch;
+        margin: 18px 0 0;
+        color: #111111;
+        font-size: 1.06rem;
+        line-height: 1.7;
+        font-family: "Helvetica Neue", "PingFang SC", sans-serif;
+        font-weight: 700;
+      }
+
+      .hero-systems {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .hero-system-line {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        align-items: start;
+        gap: 10px;
+        padding: 10px 12px;
+        background: rgba(255, 255, 255, 0.84);
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0 #000000;
+      }
+
+      .hero-system-tag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 96px;
+        padding: 6px 10px;
+        border: 2px solid #000000;
+        background: #000000;
+        color: #ffffff;
+        font-family: "Arial Black", sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-system-tag.accent {
+        background: var(--accent);
+      }
+
+      .hero-system-copy {
+        color: #111111;
+        font-size: 0.98rem;
+        line-height: 1.55;
+        font-family: "Helvetica Neue", "PingFang SC", sans-serif;
+        font-weight: 700;
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button,
+      button {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 0;
+        transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 900;
+        border: 3px solid #000000;
+      }
+
+      .button:hover {
+        transform: translate(-3px, -3px);
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #ffffff;
+        box-shadow: 7px 7px 0 #000000;
+      }
+
+      .button.secondary {
+        background: #ffffff;
+        color: #000000;
+        box-shadow: 7px 7px 0 #000000;
+      }
+
+      .note-card {
+        padding: 14px 16px;
+        border-radius: 0;
+        background: #000000;
+        color: #ffffff;
+        border: 4px solid #ffffff;
+        box-shadow: 10px 10px 0 var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% 88%, 92% 100%, 0 100%);
+      }
+
+      .note-card .label {
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #ff8d97;
+      }
+
+      .note-card .big {
+        display: block;
+        margin-top: 8px;
+        font-family: "Arial Black", sans-serif;
+        font-size: 1.32rem;
+        line-height: 1.04;
+        text-transform: uppercase;
+      }
+
+      .lang-en .note-card {
+        padding: 12px 14px;
+        width: min(100%, 378px);
+        margin: 42px 0 0 auto;
+      }
+
+      .lang-en .note-card .big {
+        font-size: 1.12rem;
+        line-height: 1.06;
+      }
+
+      .lang-en .note-card ul {
+        margin-top: 12px;
+      }
+
+      .lang-en .note-card li {
+        font-size: 0.88rem;
+        line-height: 1.35;
+      }
+
+      .lang-en .hero-side {
+        gap: 14px;
+      }
+
+      .hero-side {
+        display: grid;
+        gap: 8px;
+        position: relative;
+        align-self: stretch;
+        min-width: 0;
+      }
+
+      .hero-side::before {
+        content: "";
+        position: absolute;
+        right: -5%;
+        top: 7%;
+        width: 90%;
+        height: 88%;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.88));
+        clip-path: polygon(18% 0, 100% 4%, 82% 100%, 0 96%);
+        opacity: 0.09;
+        z-index: 0;
+        transform: skew(-10deg);
+      }
+
+      .hero-side > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 4px 12px 14px 2px;
+      }
+
+      .polaroid {
+        padding: 6px;
+        border-radius: 0;
+        background: #ffffff;
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0 #000000;
+      }
+
+      .polaroid:nth-child(1) {
+        transform: rotate(-4deg) translateY(2px);
+      }
+
+      .polaroid:nth-child(2) {
+        transform: rotate(5deg) translateY(-2px);
+      }
+
+      .polaroid:nth-child(3) {
+        transform: rotate(3deg) translateY(0);
+      }
+
+      .polaroid:nth-child(4) {
+        transform: rotate(-3deg) translateY(2px);
+      }
+
+      .polaroid img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1.08;
+        object-fit: cover;
+        border-radius: 0;
+        background: #1d1a17;
+        filter: contrast(1.14) saturate(1.02);
+      }
+
+      .polaroid::after {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        background:
+          linear-gradient(180deg, transparent 0 58%, rgba(0, 0, 0, 0.2) 58% 100%);
+        mix-blend-mode: multiply;
+        pointer-events: none;
+      }
+
+      .polaroid p {
+        margin: 7px 2px 0;
+        color: #000000;
+        font-size: 0.76rem;
+        line-height: 1.24;
+        font-weight: 900;
+        min-height: 2.5em;
+        word-break: break-word;
+      }
+
+      .note-card ul {
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .note-card li + li {
+        margin-top: 10px;
+      }
+
+      .section {
+        margin-top: 24px;
+      }
+
+      .section:nth-of-type(odd) {
+        transform: rotate(-0.4deg);
+      }
+
+      .section:nth-of-type(even) {
+        transform: rotate(0.35deg);
+      }
+
+      .marquee {
+        overflow: hidden;
+        border-radius: 0;
+        border: 4px solid #000000;
+        background: var(--accent);
+        white-space: nowrap;
+        box-shadow: 10px 10px 0 #000000;
+        transform: rotate(-1.2deg);
+      }
+
+      .marquee::before,
+      .marquee::after {
+        content: "";
+        position: absolute;
+        top: -18px;
+        width: 90px;
+        height: calc(100% + 36px);
+        background: #000000;
+        z-index: 2;
+      }
+
+      .marquee::before {
+        left: -32px;
+        transform: skew(-24deg);
+      }
+
+      .marquee::after {
+        right: -32px;
+        transform: skew(-24deg);
+      }
+
+      .marquee-track {
+        display: inline-flex;
+        gap: 18px;
+        padding: 16px 0;
+        min-width: max-content;
+        animation: slide 28s linear infinite;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 18px;
+        color: #ffffff;
+        font-size: 0.96rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .chip::before {
+        content: "•";
+        color: #000000;
+      }
+
+      @keyframes slide {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .panel-grid {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 24px;
+      }
+
+      .panel-grid .panel:first-child {
+        transform: rotate(-1.2deg);
+      }
+
+      .panel-grid .panel:last-child {
+        transform: rotate(0.9deg);
+      }
+
+      .panel {
+        padding: 28px;
+        border-radius: 0;
+        background: #ffffff;
+        color: #000000;
+        border: 4px solid #000000;
+        box-shadow: 12px 12px 0 #000000;
+        backdrop-filter: none;
+        clip-path: polygon(0 0, 96% 0, 100% 8%, 100% 100%, 4% 100%, 0 92%);
+      }
+
+      .section-kicker {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .section-kicker span {
+        color: var(--accent);
+        font-size: 0.88rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+
+      .section-kicker strong {
+        font-family: "Arial Black", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .impact-stamp {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        background: #ffe500;
+        color: #000000;
+        border: 4px solid #000000;
+        box-shadow: 6px 6px 0 #000000;
+        font-family: "Arial Black", sans-serif;
+        font-size: 0.98rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transform: rotate(-7deg);
+      }
+
+      .burst {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 132px;
+        min-height: 132px;
+        padding: 20px;
+        background: #ffe500;
+        color: #000000;
+        border: 5px solid #000000;
+        font-family: "Arial Black", sans-serif;
+        font-size: 1.08rem;
+        line-height: 1.1;
+        text-align: center;
+        text-transform: uppercase;
+        clip-path: polygon(
+          50% 0%,
+          62% 18%,
+          82% 6%,
+          76% 28%,
+          100% 24%,
+          84% 44%,
+          100% 56%,
+          76% 62%,
+          90% 86%,
+          66% 76%,
+          62% 100%,
+          46% 80%,
+          26% 100%,
+          24% 76%,
+          0% 84%,
+          14% 60%,
+          0% 48%,
+          20% 38%,
+          8% 18%,
+          32% 20%
+        );
+        box-shadow: 8px 8px 0 #000000;
+      }
+
+      .burst small {
+        display: block;
+        font-size: 0.74rem;
+      }
+
+      .breath-wrap {
+        display: grid;
+        place-items: center;
+        gap: 18px;
+        min-height: 430px;
+      }
+
+      .breath-orb {
+        width: 220px;
+        height: 220px;
+        border-radius: 42% 58% 37% 63% / 57% 35% 65% 43%;
+        background:
+          radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), transparent 24%),
+          linear-gradient(135deg, #e70012 0%, #ff4d5b 60%, #000000 60%, #000000 100%);
+        box-shadow:
+          inset 0 0 0 4px rgba(255, 255, 255, 0.18),
+          10px 10px 0 #000000,
+          0 0 0 4px #ffffff;
+        animation: breathe 8s ease-in-out infinite paused;
+      }
+
+      .breath-orb.active {
+        animation-play-state: running;
+      }
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: scale(0.88);
+          border-radius: 46% 54% 48% 52% / 53% 46% 54% 47%;
+        }
+        50% {
+          transform: scale(1.08);
+          border-radius: 54% 46% 55% 45% / 46% 54% 46% 54%;
+        }
+      }
+
+      .breath-phase {
+        font-family: "Arial Black", sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .breath-meta {
+        text-align: center;
+        color: #2a2a2a;
+        line-height: 1.7;
+        max-width: 28ch;
+        font-weight: 700;
+      }
+
+      .systems {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .system-card {
+        min-height: 220px;
+        padding: 22px;
+        border-radius: 0;
+        background: #f7f7f7;
+        border: 4px solid #000000;
+        box-shadow: 8px 8px 0 #000000;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 94% 100%, 0 100%);
+      }
+
+      .system-card:nth-child(odd) {
+        transform: rotate(-1deg);
+      }
+
+      .system-card:nth-child(even) {
+        transform: rotate(1deg);
+      }
+
+      .system-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            -58deg,
+            rgba(0, 0, 0, 0.04) 0 12px,
+            transparent 12px 26px
+          );
+        pointer-events: none;
+      }
+
+      .system-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+      }
+
+      .system-card p {
+        margin: 0;
+        color: #333333;
+        line-height: 1.8;
+        font-weight: 700;
+      }
+
+      .system-card .meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        color: var(--accent);
+        font-size: 0.82rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 900;
+      }
+
+      .system-card .meta b {
+        font-size: 1rem;
+      }
+
+      .system-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 18px;
+        color: #000000;
+        font-size: 0.92rem;
+        font-weight: 700;
+        background: #ffe500;
+        padding: 8px 10px;
+        border: 3px solid #000000;
+        box-shadow: 5px 5px 0 #000000;
+        text-transform: uppercase;
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .stack span {
+        padding: 8px 12px;
+        border-radius: 0;
+        background: #000000;
+        color: #ffffff;
+        font-size: 0.94rem;
+        border: 3px solid #ffffff;
+        font-weight: 900;
+        transform: rotate(-2deg);
+      }
+
+      .podcast-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 24px;
+      }
+
+      .podcast-grid .tape {
+        transform: rotate(-1deg);
+      }
+
+      .podcast-grid .transcript {
+        transform: rotate(1deg);
+      }
+
+      .tape {
+        position: relative;
+        min-height: 320px;
+        padding: 26px;
+        border-radius: 0;
+        color: #fff7f1;
+        background:
+          linear-gradient(145deg, #000000 0 64%, #e70012 64% 100%);
+        overflow: hidden;
+        border: 4px solid #ffffff;
+        box-shadow: 12px 12px 0 #000000;
+        clip-path: polygon(0 0, 94% 0, 100% 10%, 100% 100%, 0 100%, 0 8%);
+      }
+
+      .tape::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            -64deg,
+            rgba(255, 255, 255, 0.12) 0 10px,
+            transparent 10px 26px
+          );
+        mix-blend-mode: screen;
+        opacity: 0.5;
+      }
+
+      .tape::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -16% auto;
+        width: 54%;
+        height: 54%;
+        background:
+          radial-gradient(circle, rgba(255, 255, 255, 0.22) 14%, transparent 15%) 0 0 / 16px 16px;
+        transform: skew(-18deg) rotate(6deg);
+      }
+
+      .tape small,
+      .transcript small {
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.72;
+      }
+
+      .tape h2 {
+        margin-top: 18px;
+        font-family: "Arial Black", sans-serif;
+        font-size: 2.3rem;
+        line-height: 1.04;
+        text-transform: uppercase;
+      }
+
+      .meter {
+        display: flex;
+        align-items: end;
+        gap: 6px;
+        margin-top: 28px;
+        height: 72px;
+      }
+
+      .meter span {
+        width: 10px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #f4c59d, #bf5b36);
+        animation: pulse 1.2s ease-in-out infinite;
+        transform-origin: bottom;
+      }
+
+      .meter span:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+
+      .meter span:nth-child(3) {
+        animation-delay: 0.24s;
+      }
+
+      .meter span:nth-child(4) {
+        animation-delay: 0.36s;
+      }
+
+      .meter span:nth-child(5) {
+        animation-delay: 0.48s;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          height: 24px;
+        }
+        50% {
+          height: 68px;
+        }
+      }
+
+      .transcript {
+        padding: 28px;
+        border-radius: 0;
+        background: #ffffff;
+        border: 4px solid #000000;
+        box-shadow: 12px 12px 0 #000000;
+        color: #000000;
+        clip-path: polygon(0 0, 100% 0, 100% 92%, 92% 100%, 0 100%);
+      }
+
+      .transcript p {
+        margin: 18px 0 0;
+        color: #2b2b2b;
+        line-height: 1.9;
+        font-weight: 700;
+      }
+
+      .episode-card {
+        display: grid;
+        grid-template-columns: 104px 1fr;
+        gap: 16px;
+        margin-top: 22px;
+        padding: 16px;
+        border-radius: 0;
+        background: #f2f2f2;
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0 var(--accent);
+      }
+
+      .episode-card img {
+        width: 100%;
+        border-radius: 14px;
+        object-fit: cover;
+      }
+
+      .episode-card strong {
+        display: block;
+        font-size: 1.06rem;
+      }
+
+      .episode-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .manifesto {
+        position: relative;
+        padding: 34px;
+        border-radius: 0;
+        background:
+          linear-gradient(160deg, #ffffff 0 74%, #000000 74% 100%);
+        border: 5px solid #000000;
+        box-shadow: 14px 14px 0 var(--accent);
+        color: #000000;
+        clip-path: polygon(0 0, 96% 0, 100% 10%, 100% 100%, 6% 100%, 0 90%);
+      }
+
+      .manifesto::before {
+        content: "";
+        position: absolute;
+        left: -4%;
+        bottom: -4%;
+        width: 42%;
+        height: 32%;
+        background: #000000;
+        clip-path: polygon(0 24%, 100% 0, 84% 100%, 0 84%);
+        opacity: 0.08;
+        transform: skew(-14deg);
+      }
+
+      .hero-callout {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-top: 18px;
+        flex-wrap: wrap;
+      }
+
+      .silhouette {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .silhouette img {
+        filter: contrast(1.16) saturate(1.05) brightness(0.96);
+      }
+
+      .silhouette::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(130deg, transparent 0 38%, rgba(231, 0, 18, 0.92) 38% 48%, transparent 48% 100%),
+          repeating-linear-gradient(
+            -58deg,
+            rgba(255, 255, 255, 0.3) 0 2px,
+            transparent 2px 10px
+          );
+        mix-blend-mode: screen;
+      }
+
+      .sfx {
+        position: absolute;
+        z-index: 3;
+        font-family: "Arial Black", sans-serif;
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 0.88;
+        text-transform: uppercase;
+        color: #ffffff;
+        -webkit-text-stroke: 4px #000000;
+        text-shadow:
+          6px 6px 0 var(--accent),
+          10px 10px 0 #000000;
+        transform: rotate(-11deg);
+        pointer-events: none;
+      }
+
+      .sfx-top {
+        right: -10px;
+        top: -8px;
+      }
+
+      .sfx-mid {
+        left: -6px;
+        bottom: 8px;
+        transform: rotate(9deg);
+      }
+
+      .manifesto-grid {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 24px;
+      }
+
+      .manifesto-grid > div:first-child {
+        transform: skew(-5deg);
+      }
+
+      .manifesto-grid > div:first-child > * {
+        transform: skew(5deg);
+      }
+
+      .manifesto-title {
+        font-family: "Arial Black", sans-serif;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        line-height: 0.92;
+        text-transform: uppercase;
+      }
+
+      .manifesto-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .manifesto-item {
+        padding: 18px 20px;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.92);
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0 #000000;
+      }
+
+      .manifesto-item strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1.04rem;
+      }
+
+      .signal-box {
+        margin-top: 20px;
+        padding: 16px 18px;
+        border-radius: 0;
+        background: var(--accent);
+        border: 4px solid #000000;
+        color: #ffffff;
+        font-size: 0.94rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        box-shadow: 8px 8px 0 #000000;
+      }
+
+      .question-list,
+      .want-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .question-list div,
+      .want-list div {
+        padding: 16px 18px;
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.92);
+        border: 3px solid #000000;
+        box-shadow: 6px 6px 0 #000000;
+        font-weight: 900;
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .stats-row div {
+        padding: 18px;
+        border-radius: 0;
+        background: #000000;
+        border: 3px solid #ffffff;
+        color: #ffffff;
+        box-shadow: 6px 6px 0 var(--accent);
+      }
+
+      .stats-row strong {
+        display: block;
+        font-family: "Arial Black", sans-serif;
+        font-size: 2rem;
+      }
+
+      .stats-row span {
+        display: block;
+        margin-top: 6px;
+        color: #ffffff;
+        font-size: 0.88rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .manifesto-item p,
+      .footer p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .footer {
+        margin-top: 24px;
+        padding: 26px 30px;
+        border-radius: 0;
+        background: linear-gradient(145deg, #000000 0 70%, #e70012 70% 100%);
+        color: #fff6ee;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 20px;
+        border: 5px solid #ffffff;
+        box-shadow: 14px 14px 0 #000000;
+        clip-path: polygon(0 0, 100% 0, 100% 88%, 95% 100%, 0 100%);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
+        align-content: start;
+      }
+
+      .footer-links a {
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .tiny {
+        margin-top: 16px;
+        font-size: 0.92rem;
+        color: rgba(255, 246, 238, 0.72);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px) rotate(-1deg);
+        animation: reveal 640ms ease forwards;
+      }
+
+      .reveal.delay-1 {
+        animation-delay: 0.08s;
+      }
+
+      .reveal.delay-2 {
+        animation-delay: 0.16s;
+      }
+
+      .reveal.delay-3 {
+        animation-delay: 0.24s;
+      }
+
+      @keyframes reveal {
+        to {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .panel-grid,
+        .podcast-grid,
+        .manifesto-grid,
+        .footer {
+          grid-template-columns: 1fr;
+        }
+
+        .systems {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-links {
+          justify-content: flex-start;
+        }
+
+        .hero-side {
+          max-width: 860px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .photo-grid {
+          gap: 14px;
+          padding: 8px 8px 16px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(var(--max), calc(100vw - 20px));
+          padding-top: 12px;
+        }
+
+        .topbar {
+          top: 10px;
+          padding: 14px;
+          transform: none;
+        }
+
+        .brand,
+        .nav,
+        .lang-switcher,
+        .hero-grid > div:first-child,
+        .hero-grid > div:first-child > *,
+        .manifesto-grid > div:first-child,
+        .manifesto-grid > div:first-child > * {
+          transform: none;
+        }
+
+        .topbar-right {
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+
+        .hero,
+        .panel,
+        .tape,
+        .transcript,
+        .manifesto {
+          padding: 24px;
+          clip-path: none;
+        }
+
+        .hero h1 {
+          max-width: none;
+          font-size: clamp(2.8rem, 14vw, 4.2rem);
+        }
+
+        .breath-wrap {
+          min-height: 360px;
+        }
+
+        .breath-orb {
+          width: 180px;
+          height: 180px;
+        }
+
+        .section,
+        .panel-grid .panel:first-child,
+        .panel-grid .panel:last-child,
+        .podcast-grid .tape,
+        .podcast-grid .transcript,
+        .system-card,
+        .polaroid,
+        .marquee {
+          transform: none;
+        }
+
+        .photo-grid {
+          gap: 10px;
+          padding: 6px 4px 14px;
+        }
+
+        .stats-row {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-callout {
+          gap: 12px;
+        }
+
+        .burst {
+          min-width: 104px;
+          min-height: 104px;
+          font-size: 0.9rem;
+        }
+
+        .sfx {
+          font-size: 1.6rem;
+          -webkit-text-stroke: 2px #000000;
+        }
+
+        .polaroid p {
+          font-size: 0.76rem;
+          min-height: 2.5em;
+        }
+      }
+    </style>
   </head>
-
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="page" id="top">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">K</div>
+          <div>
+            <div data-i18n="brand.title">Kathy Manual</div>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <nav class="nav">
+            <a href="#manual" data-i18n="nav.manual">说明书</a>
+            <a href="#rhythm" data-i18n="nav.rhythm">节奏</a>
+            <a href="#voice" data-i18n="nav.voice">声音</a>
+            <a href="#manifesto" data-i18n="nav.manifesto">原则</a>
+          </nav>
+          <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang-btn="zh-Hans">简</button>
+            <button class="lang-btn" data-lang-btn="zh-Hant">繁</button>
+            <button class="lang-btn" data-lang-btn="en">EN</button>
+            <button class="lang-btn" data-lang-btn="ja">日</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="hero reveal">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow" data-i18n="hero.eyebrow">Now Playing / Infinite Game · CH.01</div>
+            <h1 data-i18n="hero.title">Kathy 的多重宇宙入口。</h1>
+            <div class="hero-callout">
+              <div class="impact-stamp" data-i18n="hero.stamp">Phantom Signal</div>
+              <div class="burst">
+                <div>
+                  <span data-i18n="hero.burstLine1">SYSTEM</span>
+                  <small data-i18n="hero.burstLine2">UNLOCK</small>
+                </div>
+              </div>
+            </div>
+            <p data-i18n="hero.p1">
+              我是 Kathy，一个同时活在四个平行宇宙里的叛逆者。这里不是简历，也不是普通个人主页，而是我如何运行、如何切换、如何在无限游戏里继续玩的入口。
+            </p>
+            <p data-i18n="hero.p2">
+              我不相信单一频道的人生。我拒绝被“一份工作、一个身份、一个标签”定义。
+            </p>
+            <div class="hero-systems">
+              <div class="hero-system-line">
+                <span class="hero-system-tag accent">System 1</span>
+                <span class="hero-system-copy" data-i18n="hero.system1">热血泰拳、巴西柔术与《时差 8 个钟》的声音现场。</span>
+              </div>
+              <div class="hero-system-line">
+                <span class="hero-system-tag">System 2</span>
+                <span class="hero-system-copy" data-i18n="hero.system2">机床贸易创业与跨境金融理财的现实引擎。</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a class="button primary" href="#manual" data-i18n="hero.ctaExplore">探索四个宇宙</a>
+              <button class="button secondary" id="start-breath" data-i18n="hero.ctaActivate">5 秒挑战 · 激活 SYSTEM 1</button>
+            </div>
+          </div>
+
+          <aside class="hero-side reveal delay-1">
+            <div class="note-card">
+              <div class="label" data-i18n="hero.noteLabel">Signal</div>
+              <span class="big" data-i18n="hero.noteTitle">不是职业标签的列表，而是并行运行的 Kathy。</span>
+              <ul>
+                <li data-i18n="hero.note1">用拳头和头脑，在无限游戏里不断觉醒。</li>
+                <li data-i18n="hero.note2">如果你也厌倦了世俗脚本，欢迎接入。</li>
+              </ul>
+            </div>
+
+            <div class="photo-grid">
+              <figure class="polaroid silhouette">
+                <div class="sfx sfx-top" data-i18n="hero.sfx1">Rebel</div>
+                <img src="./assets/kathy-portrait.jpg" alt="Kathy portrait 1" data-i18n-alt="hero.photoAlt1" />
+                <p data-i18n="hero.photo1">不为符合世俗的眼光</p>
+              </figure>
+              <figure class="polaroid">
+                <img src="./assets/kathy-portrait-2.jpg" alt="Kathy portrait 2" data-i18n-alt="hero.photoAlt2" />
+                <p data-i18n="hero.photo2">只为突破自我</p>
+              </figure>
+              <figure class="polaroid silhouette">
+                <div class="sfx sfx-mid" data-i18n="hero.sfx2">Fight</div>
+                <img src="./assets/kathy-portrait-3.jpg" alt="Kathy portrait 3" data-i18n-alt="hero.photoAlt3" />
+                <p data-i18n="hero.photo3">获得自由</p>
+              </figure>
+              <figure class="polaroid">
+                <img src="./assets/kathy-portrait-4.jpg" alt="Kathy portrait 4" data-i18n-alt="hero.photoAlt4" />
+                <p data-i18n="hero.photo4">探索世界的边界</p>
+              </figure>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section marquee reveal delay-1" aria-label="关键词滚动条">
+        <div class="marquee-track">
+          <span class="chip" data-i18n="marquee.1">FIGHTER</span>
+          <span class="chip" data-i18n="marquee.2">BUILDER</span>
+          <span class="chip" data-i18n="marquee.3">CREATOR</span>
+          <span class="chip" data-i18n="marquee.4">SOUL</span>
+          <span class="chip" data-i18n="marquee.5">INFINITE GAME</span>
+          <span class="chip" data-i18n="marquee.6">时差 8 个钟</span>
+          <span class="chip" data-i18n="marquee.7">MULTIVERSE</span>
+          <span class="chip" data-i18n="marquee.8">REBEL</span>
+          <span class="chip" data-i18n="marquee.1">FIGHTER</span>
+          <span class="chip" data-i18n="marquee.2">BUILDER</span>
+          <span class="chip" data-i18n="marquee.3">CREATOR</span>
+          <span class="chip" data-i18n="marquee.4">SOUL</span>
+          <span class="chip" data-i18n="marquee.5">INFINITE GAME</span>
+          <span class="chip" data-i18n="marquee.6">时差 8 个钟</span>
+          <span class="chip" data-i18n="marquee.7">MULTIVERSE</span>
+          <span class="chip" data-i18n="marquee.8">REBEL</span>
+        </div>
+      </section>
+
+      <section class="section panel-grid" id="manual">
+        <article class="panel reveal delay-1" id="rhythm">
+          <div class="section-kicker">
+            <span data-i18n="rhythm.kicker">Breath Timer</span>
+            <strong data-i18n="rhythm.title">5 秒呼吸激活</strong>
+          </div>
+          <div class="breath-wrap">
+            <div class="breath-orb" id="breath-orb" aria-hidden="true"></div>
+            <div class="breath-phase" id="breath-phase" data-i18n="rhythm.ready">准备开始</div>
+            <div class="breath-meta" id="breath-meta" data-i18n="rhythm.meta">
+              放下手机，深呼吸。5 秒钟，让身体回到当下。热血宇宙的入口，不在拳套里，在你的大脑里。
+            </div>
+            <button class="button primary" id="toggle-breath" data-i18n="rhythm.start">开始 5 秒挑战</button>
+          </div>
+        </article>
+
+        <article class="panel reveal delay-2">
+          <div class="section-kicker">
+            <span data-i18n="systems.kicker">Systems Grid</span>
+            <strong data-i18n="systems.title">我的四个宇宙</strong>
+          </div>
+          <div class="systems">
+            <section class="system-card">
+              <div class="meta"><b>💹</b><span data-i18n="systems.card1.meta">System 2 · Strategist Mode</span></div>
+              <h3 data-i18n="systems.card1.title">跨境金融理财顾问</h3>
+              <p data-i18n="systems.card1.desc">2014 年起入行，十年跨境金融实战。帮高净值家庭在多市场之间配置资产。</p>
+              <a class="system-link" href="https://kathyhkmoney.lovable.app/" target="_blank" rel="noopener noreferrer" data-i18n="systems.card1.link">进入金融宇宙 ↗</a>
+            </section>
+            <section class="system-card">
+              <div class="meta"><b>⚙️</b><span data-i18n="systems.card2.meta">System 2 · Builder Mode</span></div>
+              <h3 data-i18n="systems.card2.title">机床贸易创业者</h3>
+              <p data-i18n="systems.card2.desc">2019 年至今，深耕工业机床跨境贸易，也持续发掘机械制造行业里优秀的女性，一起交流、合作、创造更大价值。</p>
+              <a class="system-link" href="https://cn.hk-ky.com/" target="_blank" rel="noopener noreferrer" data-i18n="systems.card2.link">访问公司主页 ↗</a>
+            </section>
+            <section class="system-card">
+              <div class="meta"><b>🥊</b><span data-i18n="systems.card3.meta">System 1 · Fighter Mode</span></div>
+              <h3 data-i18n="systems.card3.title">泰拳 × 巴西柔术</h3>
+              <p data-i18n="systems.card3.desc">在擂台上学会的不是赢，是被打倒后还能站起来。背着电脑和拳套四处游历，不为符合任何审美，只为突破自我，获得自由。</p>
+              <a class="system-link" href="https://www.xiaohongshu.com/user/profile/637a65cc0000000024014d4f?xsec_token=YB3vqch3cR-fjNTk7s7mK2a5ip5ser3CNMGeOVSerc_9A=&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODk5QTk6R0w2NzUyOTgwNjg3OTg4STpP&apptime=1776874623&share_id=356b5c5c747440c5800e1fe92473befb" target="_blank" rel="noopener noreferrer" data-i18n="systems.card3.link">走进擂台 ↗</a>
+            </section>
+            <section class="system-card">
+              <div class="meta"><b>🎙️</b><span data-i18n="systems.card4.meta">System 1 · Creator Mode</span></div>
+              <h3 data-i18n="systems.card4.title">播客主理人</h3>
+              <p data-i18n="systems.card4.desc">《时差 8 个钟》连接香港与伦敦，聊成长、异乡、漂泊与探索。时差不是距离，而是两种人生在同一通话里碰撞的火花。</p>
+              <a class="system-link" href="https://open.spotify.com/show/2Zii8qwGFv2QmTWYYP4Zh2?si=1372812a612849cb" target="_blank" rel="noopener noreferrer" data-i18n="systems.card4.link">听一集播客 ↗</a>
+            </section>
+          </div>
+          <div class="stack">
+            <span data-i18n="systems.tag1">切换不是分裂</span>
+            <span data-i18n="systems.tag2">并行不是冲突</span>
+            <span data-i18n="systems.tag3">完整不止一种样子</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="section podcast-grid" id="voice">
+        <article class="tape reveal delay-1">
+          <small data-i18n="podcast.kicker">Podcast</small>
+          <h2 data-i18n="podcast.title">《时差 8 个钟》不是栏目摆设，而是我和世界对话的一条声波通道。</h2>
+          <p data-i18n="podcast.desc">香港 × 伦敦，两位女生的对谈录。时差不是距离，是两种人生在同一通话里碰撞出来的火花。</p>
+          <div class="meter" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </article>
+
+        <article class="transcript reveal delay-2">
+          <small data-i18n="podcast.transcript">Transcript / Draft</small>
+          <p data-i18n="podcast.blockTitle">《时差8个钟》</p>
+          <p data-i18n="podcast.blockSub">香港 × 伦敦 · 两位女生的对谈录</p>
+          <p data-i18n="podcast.blockDesc">时差不是距离，是两种人生在同一通话里碰撞的火花。</p>
+          <div class="episode-card">
+            <img src="./assets/podcast-ep01.jpg" alt="Podcast EP01 cover" data-i18n-alt="podcast.coverAlt" />
+            <div>
+              <strong data-i18n="podcast.epTitle">EP01 · 异乡教给我的事</strong>
+              <span data-i18n="podcast.epMeta">Spotify / 32:08</span>
+              <span><a href="https://open.spotify.com/show/2Zii8qwGFv2QmTWYYP4Zh2?si=1372812a612849cb" target="_blank" rel="noopener noreferrer" data-i18n="podcast.epLink">收听第一集 ↗</a></span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section manifesto reveal" id="manifesto">
+        <div class="manifesto-grid">
+          <div>
+            <div class="eyebrow" data-i18n="manifesto.eyebrow">Manifesto</div>
+            <h2 class="manifesto-title" data-i18n="manifesto.title">有限游戏的人为赢而玩，无限游戏的人为继续玩而玩。</h2>
+            <div class="signal-box" data-i18n="manifesto.status">Status: Not Seeking a Job / Seeking: Soul Resonance</div>
+          </div>
+          <div class="manifesto-list">
+            <article class="manifesto-item">
+              <strong data-i18n="manifesto.item1.title">我在找的是 Deep Connection，不是世俗脚本。</strong>
+              <p data-i18n="manifesto.item1.desc">简历是给操作者看的，连接是给同频共振的灵魂留的。我希望寻找更多拒绝被世俗脚本定义的人。</p>
+            </article>
+            <article class="manifesto-item">
+              <strong data-i18n="manifesto.item2.title">技术是语言，格斗是底色，深度连接是目标。</strong>
+              <p data-i18n="manifesto.item2.desc">我厌倦逻辑谬誤堆砌的社交，也無意參與無聊博弈。我配置這套系統，是為了過濾噪音，精準定位那 1% 的有趣人類。</p>
+            </article>
+            <article class="manifesto-item">
+              <strong data-i18n="manifesto.item3.title">我習慣用「配置者思維」解構世界。</strong>
+              <p data-i18n="manifesto.item3.desc">無論是巴西柔術的攻防轉換，還是 AI 世界的邏輯架構，在我的系統裡，標籤只是低效率的分類工具。</p>
+            </article>
+            <article class="manifesto-item">
+              <strong data-i18n="manifesto.item4.title">自由是連接的前提。</strong>
+              <p data-i18n="manifesto.item4.desc">如果你懂底層邏輯優於重複操作，如果你追求高密度資訊交換，如果你也相信自由才是連接前提，那這頁就是寫給你的。</p>
+            </article>
+            <div class="question-list">
+              <div data-i18n="manifesto.q1">我們能否進行一場邏輯對齊的深度對話（Deep Talk）？</div>
+              <div data-i18n="manifesto.q2">我們能否在社交噪音之外，建立一種非對稱的、高頻的能量共鳴？</div>
+            </div>
+            <div class="want-list">
+              <div data-i18n="manifesto.want1">01 · 共振</div>
+              <div data-i18n="manifesto.want2">02 · 共赢</div>
+              <div data-i18n="manifesto.want3">03 · 合作</div>
+              <div data-i18n="manifesto.want4">04 · 解鎖更多有趣的人生玩法</div>
+            </div>
+            <div class="stats-row">
+              <div><strong>04</strong><span data-i18n="manifesto.stat1">並行宇宙</span></div>
+              <div><strong>∞</strong><span data-i18n="manifesto.stat2">無限遊戲</span></div>
+              <div><strong>08</strong><span data-i18n="manifesto.stat3">Hours Apart</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer reveal delay-3">
+        <div>
+          <h3 data-i18n="footer.title">KATHY</h3>
+          <p data-i18n="footer.tagline">一個還在玩的玩家 · since ∞</p>
+          <p class="tiny" data-i18n="footer.contactline">
+            Wechat ID: Kathyyxu · Email: math314s@gmail.com
+          </p>
+        </div>
+        <div class="contact-list">
+          <a href="mailto:math314s@gmail.com" data-i18n="footer.link1">Email · math314s@gmail.com</a>
+          <a href="https://cn.hk-ky.com/" target="_blank" rel="noopener noreferrer" data-i18n="footer.link2">Machine-tool · cn.hk-ky.com ↗</a>
+          <a href="https://open.spotify.com/show/2Zii8qwGFv2QmTWYYP4Zh2?si=1372812a612849cb" target="_blank" rel="noopener noreferrer" data-i18n="footer.link3">Podcast · 時差 8 個鐘 ↗</a>
+          <a href="#top" data-i18n="footer.link4">A player still playing · since ∞</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const translations = { /* the full translations object from the user's paste */ };
+      /* the entire script from the paste */
+      const storageKey = "kathy-manual-lang";
+      const langButtons = document.querySelectorAll("[data-lang-btn]");
+      const i18nNodes = document.querySelectorAll("[data-i18n]");
+      const i18nAltNodes = document.querySelectorAll("[data-i18n-alt]");
+
+      function getInitialLang() {
+        const saved = window.localStorage.getItem(storageKey);
+        if (saved && translations[saved]) return saved;
+        const navLang = (navigator.language || "").toLowerCase();
+        if (navLang.startsWith("ja")) return "ja";
+        if (navLang.includes("tw") || navLang.includes("hk") || navLang.includes("hant")) return "zh-Hant";
+        if (navLang.startsWith("en")) return "en";
+        return "zh-Hans";
+      }
+
+      function applyTranslations(lang) {
+        const dict = translations[lang] || translations["zh-Hans"];
+        i18nNodes.forEach((node) => {
+          const key = node.getAttribute("data-i18n");
+          if (key && dict[key]) {
+            node.textContent = dict[key];
+          }
+        });
+        i18nAltNodes.forEach((node) => {
+          const key = node.getAttribute("data-i18n-alt");
+          if (key && dict[key]) {
+            node.setAttribute("alt", dict[key]);
+          }
+        });
+        langButtons.forEach((btn) => {
+          btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
+        });
+        document.documentElement.lang =
+          lang === "zh-Hans" ? "zh-CN" : lang === "zh-Hant" ? "zh-HK" : lang;
+        document.body.classList.remove("lang-zh-Hans", "lang-zh-Hant", "lang-en", "lang-ja");
+        document.body.classList.add(`lang-${lang}`);
+        window.localStorage.setItem(storageKey, lang);
+      }
+
+      const orb = document.getElementById("breath-orb");
+      const phase = document.getElementById("breath-phase");
+      const meta = document.getElementById("breath-meta");
+      const toggle = document.getElementById("toggle-breath");
+      const start = document.getElementById("start-breath");
+
+      let currentLang = getInitialLang();
+
+      function getSequence() {
+        const dict = translations[currentLang] || translations["zh-Hans"];
+        return [
+          { label: dict["rhythm.seq1"], note: dict["rhythm.seq1note"], duration: 2500 },
+          { label: dict["rhythm.seq2"], note: dict["rhythm.seq2note"], duration: 1000 },
+          { label: dict["rhythm.seq3"], note: dict["rhythm.seq3note"], duration: 2500 }
+        ];
+      }
+
+      let running = false;
+      let timer = null;
+      let step = 0;
+
+      function renderCurrentStep() {
+        const sequence = getSequence();
+        phase.textContent = sequence[step].label;
+        meta.textContent = sequence[step].note;
+      }
+
+      function clearBreath() {
+        window.clearTimeout(timer);
+        timer = null;
+      }
+
+      function runBreathLoop() {
+        const sequence = getSequence();
+        renderCurrentStep();
+        timer = window.setTimeout(() => {
+          step = (step + 1) % sequence.length;
+          runBreathLoop();
+        }, sequence[step].duration);
+      }
+
+      function startBreath() {
+        if (running) {
+          return;
+        }
+        running = true;
+        step = 0;
+        orb.classList.add("active");
+        toggle.textContent = translations[currentLang]["rhythm.pause"];
+        start.textContent = translations[currentLang]["rhythm.activated"];
+        runBreathLoop();
+      }
+
+      function stopBreath() {
+        running = false;
+        clearBreath();
+        orb.classList.remove("active");
+        phase.textContent = translations[currentLang]["rhythm.ready"];
+        meta.textContent = translations[currentLang]["rhythm.meta"];
+        toggle.textContent = translations[currentLang]["rhythm.start"];
+        start.textContent = translations[currentLang]["hero.ctaActivate"];
+      }
+
+      langButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentLang = btn.getAttribute("data-lang-btn");
+          applyTranslations(currentLang);
+          if (!running) {
+            phase.textContent = translations[currentLang]["rhythm.ready"];
+            meta.textContent = translations[currentLang]["rhythm.meta"];
+            toggle.textContent = translations[currentLang]["rhythm.start"];
+            start.textContent = translations[currentLang]["hero.ctaActivate"];
+          } else {
+            renderCurrentStep();
+            toggle.textContent = translations[currentLang]["rhythm.pause"];
+            start.textContent = translations[currentLang]["rhythm.activated"];
+          }
+        });
+      });
+
+      toggle.addEventListener("click", () => {
+        if (running) {
+          stopBreath();
+        } else {
+          startBreath();
+        }
+      });
+
+      start.addEventListener("click", () => {
+        document.getElementById("rhythm").scrollIntoView({ behavior: "smooth", block: "start" });
+        if (!running) {
+          window.setTimeout(startBreath, 450);
+        }
+      });
+
+      applyTranslations(currentLang);
+      stopBreath();
+    </script>
   </body>
 </html>
