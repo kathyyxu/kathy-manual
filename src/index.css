@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* KATHY — Multiverse Cyber-Pop Design System
+   All colors MUST be HSL. */
+
+@layer base {
+  :root {
+    /* Cyber-pop dark by default — single mode */
+    --background: 270 60% 5%;
+    --foreground: 320 30% 96%;
+
+    --card: 270 50% 8%;
+    --card-foreground: 320 30% 96%;
+
+    --popover: 270 50% 8%;
+    --popover-foreground: 320 30% 96%;
+
+    /* Neon Pink */
+    --primary: 327 100% 59%;
+    --primary-foreground: 270 60% 5%;
+
+    /* Electric Lime (System 1 underground accent) */
+    --secondary: 75 100% 55%;
+    --secondary-foreground: 270 60% 5%;
+
+    --muted: 270 30% 15%;
+    --muted-foreground: 280 15% 70%;
+
+    /* Pop Gold */
+    --accent: 48 100% 50%;
+    --accent-foreground: 270 60% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 320 30% 96%;
+
+    --border: 280 40% 18%;
+    --input: 280 40% 18%;
+    --ring: 327 100% 59%;
+
+    /* Brand-specific tokens */
+    --neon-pink: 327 100% 59%;
+    --neon-pink-glow: 327 100% 70%;
+    --cyber-purple: 270 70% 25%;
+    --cyber-purple-deep: 270 80% 12%;
+    --acid-lime: 75 100% 55%;
+    --pop-gold: 48 100% 50%;
+    --ink: 270 60% 5%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(270 80% 12%) 0%, hsl(290 70% 18%) 50%, hsl(270 80% 8%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(327 100% 59%) 0%, hsl(290 100% 60%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(48 100% 50%) 0%, hsl(35 100% 55%) 100%);
+    --gradient-system1: linear-gradient(135deg, hsl(327 100% 59%) 0%, hsl(15 100% 55%) 100%);
+    --gradient-system2: linear-gradient(135deg, hsl(200 100% 50%) 0%, hsl(260 100% 60%) 100%);
+    --gradient-system3: linear-gradient(135deg, hsl(75 100% 55%) 0%, hsl(180 100% 50%) 100%);
+    --gradient-system4: linear-gradient(135deg, hsl(48 100% 50%) 0%, hsl(327 100% 59%) 100%);
+
+    /* Shadows / Glows */
+    --glow-pink: 0 0 30px hsl(327 100% 59% / 0.6), 0 0 60px hsl(327 100% 59% / 0.3);
+    --glow-gold: 0 0 25px hsl(48 100% 50% / 0.5);
+    --glow-lime: 0 0 25px hsl(75 100% 55% / 0.5);
+    --shadow-brutal: 6px 6px 0 hsl(327 100% 59%);
+    --shadow-brutal-gold: 6px 6px 0 hsl(48 100% 50%);
+
+    --radius: 0.25rem;
+
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 270 50% 8%;
+    --sidebar-foreground: 320 30% 96%;
+    --sidebar-primary: 327 100% 59%;
+    --sidebar-primary-foreground: 270 60% 5%;
+    --sidebar-accent: 270 30% 15%;
+    --sidebar-accent-foreground: 320 30% 96%;
+    --sidebar-border: 280 40% 18%;
+    --sidebar-ring: 327 100% 59%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-mono-cyber {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  .text-glow-pink {
+    text-shadow: 0 0 20px hsl(var(--neon-pink) / 0.8), 0 0 40px hsl(var(--neon-pink) / 0.4);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 18px hsl(var(--pop-gold) / 0.7);
+  }
+  .text-glow-lime {
+    text-shadow: 0 0 18px hsl(var(--acid-lime) / 0.7);
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--neon-pink) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--neon-pink) / 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .bg-scanlines {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 18px,
+      hsl(var(--neon-pink) / 0.06) 18px,
+      hsl(var(--neon-pink) / 0.06) 36px
+    );
+  }
+  .clip-torn {
+    clip-path: polygon(0 4%, 8% 0, 22% 5%, 38% 0, 55% 6%, 72% 0, 88% 5%, 100% 0, 100% 96%, 88% 100%, 72% 95%, 55% 100%, 38% 95%, 22% 100%, 8% 95%, 0 100%);
+  }
+}
+
+@layer components {
+  .glitch {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .glitch::before {
+    color: hsl(var(--acid-lime));
+    transform: translate(-2px, 0);
+    mix-blend-mode: screen;
+    animation: glitch-x 3s infinite steps(2);
+    opacity: 0.7;
+  }
+  .glitch::after {
+    color: hsl(var(--pop-gold));
+    transform: translate(2px, 0);
+    mix-blend-mode: screen;
+    animation: glitch-x 2.5s infinite reverse steps(2);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glitch-x {
+  0%, 92%, 100% { transform: translate(0, 0); }
+  93% { transform: translate(-3px, 1px); }
+  95% { transform: translate(3px, -1px); }
+  97% { transform: translate(-2px, 0); }
+}
+
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 800px; }
+}
+.animate-scanline {
+  animation: scanline 12s linear infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-12px) rotate(var(--r, 0deg)); }
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px hsl(var(--neon-pink) / 0.6), 0 0 60px hsl(var(--neon-pink) / 0.3); }
+  50% { box-shadow: 0 0 50px hsl(var(--neon-pink) / 0.9), 0 0 90px hsl(var(--neon-pink) / 0.5); }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Smash word effect — punch in, strike through, shatter out */
+@keyframes smash-pop {
+  0%   { opacity: 0; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(2.4); filter: blur(4px); }
+  18%  { opacity: 1; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(0.92); filter: blur(0); }
+  28%  { transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.05); }
+  60%  { opacity: 1; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)) scale(1.4); filter: blur(2px); }
+}
+@keyframes smash-shake {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3px, 2px); }
+  40% { transform: translate(3px, -2px); }
+  60% { transform: translate(-2px, -1px); }
+  80% { transform: translate(2px, 1px); }
+}
+@keyframes smash-strike {
+  0%, 25%   { transform: translateY(-50%) scaleX(0); transform-origin: left center; opacity: 0; }
+  35%       { opacity: 1; }
+  60%, 100% { transform: translateY(-50%) scaleX(1); transform-origin: left center; opacity: 1; }
+}
+.smash-word {
+  animation: smash-pop 1s ease-out forwards;
+  will-change: transform, opacity;
+}
+.smash-word-inner {
+  display: inline-block;
+  animation: smash-shake 0.4s ease-in-out 0.18s 2;
+}
+.smash-strike {
+  animation: smash-strike 1s ease-out forwards;
+  transform-origin: left center;
+}
