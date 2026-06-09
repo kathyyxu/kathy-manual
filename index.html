@@ -799,8 +799,9 @@
           5px 5px 0 #000,
           -2px -2px 0 #fff,
           0 0 0 3px #000; /* layered sticker depth */
-        padding: 6px;
-        /* The clip-path creates the sharp, irregular, torn-paper / shattered look from the reference */
+        padding: 8px 8px 20px; /* extra generous bottom padding so the text block (long titles + award line + link) is fully inside the frame and not clipped by the jagged edge */
+        /* The clip-path creates the sharp, irregular, torn-paper / shattered look from the reference.
+           Bottom is deliberately flatter/higher (y >= 92-96%) to protect the text from being cut. */
         clip-path: polygon(3% 7%, 14% 2%, 27% 9%, 39% 3%, 52% 8%, 64% 2%, 77% 10%, 89% 4%, 96% 15%, 93% 32%, 99% 47%, 92% 61%, 98% 74%, 87% 89%, 73% 85%, 58% 94%, 42% 86%, 27% 95%, 11% 88%, 5% 72%, 8% 55%, 2% 38%, 9% 18%);
         transform-origin: center;
         transition: transform .2s ease;
@@ -848,8 +849,9 @@
           grid-row: 1;
           width: 100%;
           transform: rotate(-5deg);
-          clip-path: polygon(4% 6%, 13% 2%, 25% 8%, 37% 1%, 50% 7%, 62% 3%, 75% 9%, 88% 2%, 95% 14%, 91% 30%, 98% 45%, 90% 60%, 96% 73%, 84% 88%, 68% 84%, 52% 93%, 35% 85%, 20% 94%, 6% 80%, 3% 62%, 10% 45%, 2% 28%, 8% 12%);
-          /* slightly different jagged for variety */
+          /* Rebel BJJ frame — jagged top/sides, much flatter bottom for full text visibility */
+          clip-path: polygon(4% 6%, 13% 2%, 25% 8%, 37% 1%, 50% 7%, 62% 3%, 75% 9%, 88% 2%, 95% 14%, 91% 30%, 98% 45%, 90% 60%, 96% 73%, 84% 88%, 68% 84%, 52% 93%, 35% 85%, 20% 94%, 8% 93%, 5% 95%, 12% 96%, 2% 94%);
+          /* Bottom points raised (y ~93-96%) so the two-line title + award line + link are never clipped by the jagged edge */
         }
 
         /* Woman Up frame - different size, tilted right, right side, slightly overlapping vibe */
@@ -859,7 +861,8 @@
           width: 100%;
           transform: rotate(4deg);
           margin-left: -12px; /* slight overlap/collage feel */
-          clip-path: polygon(5% 5%, 15% 1%, 28% 7%, 40% 2%, 53% 6%, 65% 1%, 78% 8%, 91% 3%, 97% 16%, 94% 33%, 100% 48%, 93% 63%, 97% 76%, 86% 91%, 71% 87%, 55% 95%, 38% 88%, 23% 96%, 7% 82%, 4% 60%, 9% 42%, 1% 25%, 7% 10%);
+          /* Woman Up frame — similar, bottom generous for the long title + award + link */
+          clip-path: polygon(5% 5%, 15% 1%, 28% 7%, 40% 2%, 53% 6%, 65% 1%, 78% 8%, 91% 3%, 97% 16%, 94% 33%, 100% 48%, 93% 63%, 97% 76%, 86% 91%, 71% 87%, 55% 95%, 38% 88%, 23% 96%, 8% 93%, 5% 95%, 11% 96%, 3% 94%);
         }
 
         /* FemAI award frame - larger, different proportion, different tilt, on second row as the "big prize" */
@@ -870,7 +873,8 @@
           transform: rotate(-2.5deg);
           margin-top: -18px; /* tuck under for collage overlap */
           padding: 8px;
-          clip-path: polygon(3% 8%, 12% 2%, 24% 9%, 36% 3%, 49% 8%, 61% 2%, 74% 10%, 87% 4%, 95% 17%, 92% 35%, 99% 50%, 91% 64%, 96% 78%, 83% 90%, 67% 86%, 50% 95%, 33% 87%, 18% 94%, 5% 79%, 2% 58%, 8% 40%, 1% 22%, 10% 7%);
+          /* FemAI frame — bottom very flat/high so the award text (h3 + p) is fully inside the jagged border */
+          clip-path: polygon(3% 8%, 12% 2%, 24% 9%, 36% 3%, 49% 8%, 61% 2%, 74% 10%, 87% 4%, 95% 17%, 92% 35%, 99% 50%, 91% 64%, 96% 78%, 83% 90%, 67% 86%, 50% 95%, 33% 87%, 18% 94%, 6% 93%, 4% 95%, 10% 96%, 3% 94%);
         }
       }
 
@@ -881,19 +885,20 @@
         .hacker-grid .system-card:nth-child(3) { transform: rotate(-1.5deg); }
       }
 
-      /* Banner images inside the frames - full "photo" treatment, no extra bleed needed anymore */
+      /* Banner images inside the frames - full "photo" treatment.
+         Lower max-height to guarantee vertical room for the text block below (titles are long Chinese lines). */
       .hacker-grid .banner {
         width: 100%;
         margin: 0;
         height: auto;
-        max-height: 260px; /* cap so the frame controls the visual weight */
+        max-height: 175px; /* reduced so the 2-line title + award + link below fit inside the jagged frame without cutoff */
         object-fit: contain;
         object-position: center;
       }
 
-      /* The certificate in its frame - large and clear, the "hero photo" of the third frame */
+      /* The certificate in its frame - keep it prominent but leave space for the award text. */
       .hacker-grid .system-card:nth-child(3) img {
-        max-height: 320px;
+        max-height: 240px;
         margin: 4px auto;
       }
 
