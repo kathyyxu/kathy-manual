@@ -775,8 +775,9 @@
         clip-path: polygon(0 0, 100% 0, 100% 96%, 99% 100%, 0 100%);
       }
 
-      /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible */
-      .systems .system-card {
+      /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible.
+         Use dedicated .hacker-grid so the original 4 system cards keep their original padding/clip strength. */
+      .hacker-grid .system-card {
         padding: 14px 10px;
         clip-path: polygon(0 0, 100% 0, 100% 98%, 99.5% 100%, 0 100%);
       }
@@ -1610,7 +1611,7 @@
           <span data-i18n="hacker.kicker">第五个宇宙</span>
           <strong data-i18n="hacker.title">💻 黑客松玩家</strong>
         </div>
-        <div class="systems">
+        <div class="systems hacker-grid">
           <section class="system-card">
             <img src="./assets/rebel-bjj-banner.png" alt="REBEL BJJ Banner" class="banner" />
             <div class="meta"><b>1️⃣</b><span data-i18n="hacker.card1.meta">独立开发「Rebel BJJ」</span></div>
