@@ -1325,6 +1325,21 @@
           justify-content: flex-end;
         }
 
+        /* Make the 4 Polaroid photos + frames larger on mobile by stacking the hero columns
+           so the photo-grid gets full mobile width instead of being squeezed into ~half. */
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .photo-grid {
+          gap: 12px;
+          padding: 0 0 10px;
+        }
+
+        .polaroid {
+          padding: 8px; /* slightly more frame presence while letting the photo area grow */
+        }
+
         .hero,
         .panel,
         .tape,
