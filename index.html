@@ -766,13 +766,13 @@
 
       .system-card {
         min-height: 220px;
-        padding: 22px;
+        padding: 18px;
         border-radius: 0;
         background: #f7f7f7;
         border: 4px solid #000000;
         box-shadow: 8px 8px 0 #000000;
-        /* less aggressive clip on right to prevent banner right edge from being cut */
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 98% 100%, 0 100%);
+        /* milder clip so banners (esp. Woman Up) show full right edge while keeping punk torn feel */
+        clip-path: polygon(0 0, 100% 0, 100% 94%, 98.5% 100%, 0 100%);
       }
 
       .system-card:nth-child(odd) {
@@ -864,16 +864,17 @@
         max-width: 100%;
         border: 4px solid #000000;
         box-shadow: 6px 6px 0 #000000;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         display: block;
         box-sizing: border-box;
-        /* reduced clip to avoid chopping right side of banner images */
-        clip-path: polygon(0 0, 100% 0, 100% 97%, 98% 100%, 0 100%);
+        /* no clip on banner itself so right edge of Woman Up banner is fully visible; torn edge comes from parent card */
+        clip-path: none;
       }
 
       .award-card {
         min-height: auto;
         text-align: center;
+        padding: 14px 16px; /* tighter than regular cards to make FemAI column smaller */
       }
 
       .podcast-grid {
@@ -1625,9 +1626,9 @@
           <strong>黑客松 & AI 实践</strong>
         </div>
         <div class="system-card award-card">
-          <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.1rem;">FemAI 1.0 最佳实践奖</h3>
-          <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 380px; border: 4px solid #000000; box-shadow: 8px 8px 0 #000000; margin: 8px auto; display: block;" />
-          <p style="color: #333333; font-weight: 700; margin-top: 8px; line-height: 1.5;">Track A • Awarded to Kathy • April 27, 2026</p>
+          <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 4px; font-size: 0.98rem;">FemAI 1.0 最佳实践奖</h3>
+          <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 300px; border: 3px solid #000000; box-shadow: 6px 6px 0 #000000; margin: 4px auto; display: block;" />
+          <p style="color: #333333; font-weight: 700; margin-top: 4px; line-height: 1.4; font-size: 0.92rem;">Track A • Awarded to Kathy • April 27, 2026</p>
         </div>
       </section>
 
