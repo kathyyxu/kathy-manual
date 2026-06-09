@@ -857,6 +857,21 @@
         transform: rotate(-2deg);
       }
 
+      /* New for hackathon banners and awards - Persona 5 rebellious punk vibe */
+      .banner {
+        width: 100%;
+        border: 4px solid #000000;
+        box-shadow: 6px 6px 0 #000000;
+        margin-bottom: 12px;
+        display: block;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%);
+      }
+
+      .award-card {
+        min-height: auto;
+        text-align: center;
+      }
+
       .podcast-grid {
         display: grid;
         grid-template-columns: 1fr 1.2fr;
@@ -1579,6 +1594,40 @@
         </article>
       </section>
 
+      <section class="section reveal delay-2" id="hacker">
+        <div class="section-kicker">
+          <span data-i18n="hacker.kicker">第五个宇宙</span>
+          <strong data-i18n="hacker.title">💻 黑客松玩家</strong>
+        </div>
+        <div class="systems">
+          <section class="system-card">
+            <img src="./assets/rebel-bjj-banner.jpg" alt="REBEL BJJ Banner" class="banner" />
+            <div class="meta"><b>1️⃣</b><span data-i18n="hacker.card1.meta">独立开发「Rebel BJJ」</span></div>
+            <h3 data-i18n="hacker.card1.title">为女性柔术练习者打造的 AI + Web3 训练地图</h3>
+            <p data-i18n="hacker.card1.award">🏆 Dev3pack 全球黑客松中国区第 4 名</p>
+          </section>
+          <section class="system-card">
+            <img src="./assets/woman-up-banner.png" alt="WOMAN UP! Banner" class="banner" />
+            <div class="meta"><b>2️⃣</b><span data-i18n="hacker.card2.meta">全栈开发「Woman Up」</span></div>
+            <h3 data-i18n="hacker.card2.title">格斗科普+生存技能科普+双人游戏，让小事堆积前被接住</h3>
+            <p data-i18n="hacker.card2.award">🏆 她启 Z-Heronix黑客松观众人气奖</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="section reveal delay-3" id="herstory">
+        <div class="section-kicker">
+          <span>HERSTORY</span>
+          <strong>黑客松 & AI 实践</strong>
+        </div>
+        <div class="system-card award-card">
+          <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.3rem;">FemAI 1.0 最佳实践奖</h3>
+          <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 520px; border: 4px solid #000000; box-shadow: 8px 8px 0 #000000; margin: 8px auto; display: block;" />
+          <p style="color: #333333; font-weight: 700; margin-top: 8px; line-height: 1.5;">Track A • Awarded to Kathy • April 27, 2026</p>
+          <p style="font-size: 0.9rem; color: #444; line-height: 1.6; margin-top: 6px;">恭喜圆满完成 Women AI Weave#1 「15天FemAI共学营」全程学习。以 Build in Public 精神，深入求职转型实践。</p>
+        </div>
+      </section>
+
       <section class="section podcast-grid" id="voice">
         <article class="tape reveal delay-1">
           <small data-i18n="podcast.kicker">Podcast</small>
@@ -1744,6 +1793,14 @@
           "systems.tag1": "切换不是分裂",
           "systems.tag2": "并行不是冲突",
           "systems.tag3": "完整不止一种样子",
+          "hacker.kicker": "第五个宇宙",
+          "hacker.title": "💻 黑客松玩家",
+          "hacker.card1.meta": "独立开发「Rebel BJJ」",
+          "hacker.card1.title": "为女性柔术练习者打造的 AI + Web3 训练地图",
+          "hacker.card1.award": "🏆 Dev3pack 全球黑客松中国区第 4 名",
+          "hacker.card2.meta": "全栈开发「Woman Up」",
+          "hacker.card2.title": "格斗科普+生存技能科普+双人游戏，让小事堆积前被接住",
+          "hacker.card2.award": "🏆 她启 Z-Heronix黑客松观众人气奖",
           "podcast.kicker": "Podcast",
           "podcast.title": "《时差 8 个钟》不是栏目摆设，而是我和世界对话的一条声波通道。",
           "podcast.desc": "香港 × 伦敦，两位女生的对谈录。时差不是距离，是两种人生在同一通话里碰撞出来的火花。",
@@ -1856,6 +1913,14 @@
           "systems.tag1": "切換不是分裂",
           "systems.tag2": "並行不是衝突",
           "systems.tag3": "完整不止一種樣子",
+          "hacker.kicker": "第五個宇宙",
+          "hacker.title": "💻 黑客松玩家",
+          "hacker.card1.meta": "獨立開發「Rebel BJJ」",
+          "hacker.card1.title": "為女性柔術練習者打造的 AI + Web3 訓練地圖",
+          "hacker.card1.award": "🏆 Dev3pack 全球黑客松中國區第 4 名",
+          "hacker.card2.meta": "全棧開發「Woman Up」",
+          "hacker.card2.title": "格鬥科普+生存技能科普+雙人遊戲，讓小事堆積前被接住",
+          "hacker.card2.award": "🏆 她啟 Z-Heronix黑客松觀眾人氣獎",
           "podcast.kicker": "Podcast",
           "podcast.title": "《時差 8 個鐘》不是欄目擺設，而是我和世界對話的一條聲波通道。",
           "podcast.desc": "香港 × 倫敦，兩位女生的對談錄。時差不是距離，是兩種人生在同一通話裡碰撞出來的火花。",
@@ -1968,6 +2033,14 @@
           "systems.tag1": "Switching isn't splitting",
           "systems.tag2": "Parallel isn't conflict",
           "systems.tag3": "Wholeness has more than one shape",
+          "hacker.kicker": "Fifth Universe",
+          "hacker.title": "💻 Hackathon Player",
+          "hacker.card1.meta": "Independently developed \"Rebel BJJ\"",
+          "hacker.card1.title": "AI + Web3 Training Map for Female Jiu-Jitsu Practitioners",
+          "hacker.card1.award": "🏆 Dev3pack Global Hackathon China 4th Place",
+          "hacker.card2.meta": "Full-stack developed \"Woman Up\"",
+          "hacker.card2.title": "Jiu-Jitsu & Survival Skills Education + 2-Player Game, catching small issues before they pile up",
+          "hacker.card2.award": "🏆 她启 Z-Heronix Hackathon Audience Popularity Award",
           "podcast.kicker": "Podcast",
           "podcast.title": "Timezone 8h isn't just a segment. It's a frequency channel between me and the world.",
           "podcast.desc": "Hong Kong × London. Two women in conversation. A timezone isn't distance, but the spark of two lives colliding in one call.",
@@ -2080,6 +2153,14 @@
           "systems.tag1": "切り替えは分裂ではない",
           "systems.tag2": "並行は衝突ではない",
           "systems.tag3": "完全さには複数の形がある",
+          "hacker.kicker": "第五の宇宙",
+          "hacker.title": "💻 ハッカソン プレイヤー",
+          "hacker.card1.meta": "独立開発「Rebel BJJ」",
+          "hacker.card1.title": "女性柔術練習者向け AI + Web3 トレーニング マップ",
+          "hacker.card1.award": "🏆 Dev3pack グローバルハッカソン 中国区 第4位",
+          "hacker.card2.meta": "フルスタック開発「Woman Up」",
+          "hacker.card2.title": "格闘科普+サバイバルスキル科普+2人用ゲーム、小さな問題が積もる前にキャッチ",
+          "hacker.card2.award": "🏆 她启 Z-Heronix ハッカソン 観客人気賞",
           "podcast.kicker": "Podcast",
           "podcast.title": "『Timezone 8h』はただの番組名ではない。私と世界をつなぐ音のチャンネルだ。",
           "podcast.desc": "香港 × ロンドン。二人の女性による対話。時差は距離ではなく、ひとつの通話でぶつかり合う二つの人生の火花だ。",
