@@ -804,6 +804,162 @@
         padding: 8px 8px 32px; /* generous bottom padding for text */
         transform-origin: center;
         transition: transform .2s ease;
+        position: relative; /* for ::before jagged border layer */
+      }
+
+      /* Jagged torn outer border effect using pseudo - the art is only on the "border", content inside is clean rectangular and fully visible. */
+      .hacker-grid .system-card::before {
+        content: '';
+        position: absolute;
+        inset: -12px;
+        background: #0d0d0d;
+        border: 6px solid #fff;
+        clip-path: polygon(3% 5%, 8% 1%, 15% 4%, 22% 0%, 30% 3%, 38% 1%, 47% 4%, 55% 0%, 63% 3%, 70% 1%, 78% 4%, 85% 0%, 92% 3%, 97% 6%, 99% 15%, 96% 28%, 100% 40%, 97% 55%, 100% 68%, 96% 82%, 99% 92%, 90% 98%, 78% 95%, 65% 99%, 52% 96%, 40% 99%, 25% 95%, 12% 98%, 4% 92%, 1% 78%, 4% 62%, 0% 48%, 3% 32%, 0% 18%, 5% 8%);
+        z-index: -1;
+        box-shadow: 0 0 0 4px #0d0d0d;
+      }
+
+      .hacker-grid .system-card:nth-child(1)::before {
+        clip-path: polygon(2% 4%, 10% 0%, 18% 5%, 27% 1%, 35% 4%, 44% 0%, 52% 3%, 60% 1%, 68% 4%, 77% 0%, 85% 3%, 93% 1%, 98% 7%, 95% 22%, 100% 35%, 96% 50%, 100% 65%, 95% 80%, 99% 90%, 88% 97%, 75% 94%, 60% 98%, 45% 95%, 30% 98%, 15% 94%, 5% 97%, 1% 85%, 4% 70%, 0% 55%, 3% 40%, 1% 25%, 6% 10%);
+      }
+
+      .hacker-grid .system-card:nth-child(2)::before {
+        clip-path: polygon(4% 3%, 12% 1%, 20% 4%, 29% 0%, 38% 3%, 47% 1%, 55% 4%, 64% 0%, 72% 3%, 81% 1%, 89% 4%, 96% 2%, 99% 12%, 96% 25%, 100% 38%, 97% 52%, 100% 67%, 96% 82%, 99% 93%, 90% 98%, 77% 95%, 63% 99%, 48% 96%, 33% 99%, 18% 95%, 6% 98%, 2% 88%, 5% 72%, 1% 58%, 4% 42%, 0% 28%, 5% 12%);
+      }
+
+      .hacker-grid .system-card:nth-child(3)::before {
+        clip-path: polygon(1% 6%, 7% 2%, 14% 5%, 22% 1%, 30% 4%, 39% 0%, 47% 3%, 55% 1%, 63% 4%, 71% 0%, 79% 3%, 87% 1%, 94% 5%, 98% 10%, 95% 23%, 99% 36%, 96% 49%, 100% 62%, 97% 76%, 100% 89%, 91% 97%, 78% 94%, 64% 98%, 49% 95%, 35% 98%, 20% 94%, 7% 97%, 3% 85%, 0% 70%, 3% 55%, 0% 40%, 2% 25%, 6% 10%);
+      }
+
+      /* Deco layer for extra collage elements in the empty spaces around/between the frames (following the reference image style).
+         Positioned absolute to the grid container. Pointer events none so not interfering with content.
+         Elements are black with white border, rotated, in the "空位". */
+      .hacker-grid {
+        position: relative;
+      }
+
+      .deco-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .deco {
+        position: absolute;
+        background: #000000;
+        border: 3px solid #ffffff;
+        color: #ffffff;
+        font-size: 20px;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 2px 2px 0 #000000;
+        clip-path: polygon(10% 0%, 90% 5%, 95% 85%, 5% 90%);
+        z-index: 1;
+        text-shadow: 1px 1px 0 #000000;
+        line-height: 1;
+      }
+
+      .deco-glove {
+        background: #c8102e;
+        font-size: 22px;
+        clip-path: polygon(20% 5%, 80% 8%, 85% 75%, 25% 80%);
+      }
+
+      .deco-star {
+        font-size: 18px;
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      }
+
+      .deco-dagger {
+        width: 8px;
+        height: 36px;
+        background: #000000;
+        border: 2px solid #ffffff;
+        clip-path: none;
+        /* add tip with pseudo */
+      }
+
+      .deco-dagger::after {
+        content: '';
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 10px solid #ffffff;
+        width: 0;
+        height: 0;
+      }
+
+      .deco-sword {
+        width: 10px;
+        height: 42px;
+        background: #000000;
+        border: 2px solid #ffffff;
+        clip-path: none;
+      }
+
+      .deco-sword::before {
+        content: '';
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 8px solid #ffffff;
+      }
+
+      .deco-gun {
+        width: 38px;
+        height: 14px;
+        background: #000000;
+        border: 2px solid #ffffff;
+        clip-path: none;
+      }
+
+      .deco-gun::after {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: 2px;
+        width: 0;
+        height: 0;
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 8px solid #ffffff;
+      }
+
+      .deco-chain {
+        width: 22px;
+        height: 8px;
+        background: transparent;
+        border: 2px dashed #ffffff;
+        clip-path: none;
+      }
+
+      .deco-chest {
+        width: 28px;
+        height: 20px;
+        background: #000000;
+        border: 2px solid #ffffff;
+        clip-path: none;
+      }
+
+      .deco-chest::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: 4px;
+        width: 20px;
+        height: 6px;
+        background: #000000;
+        border: 2px solid #ffffff;
       }
 
       /* Make inner text pop on the dark frame */
@@ -893,6 +1049,8 @@
         max-height: 125px; /* significantly lower so the image takes the upper "photo" area, leaving the lower safe rectangle for the text block (meta, title, award, link) to be fully visible and not cut or covered */
         object-fit: contain;
         object-position: center;
+        border: 2px solid #000;
+        box-shadow: none; /* delete the white frame/border for the two banners as requested */
       }
 
       /* The certificate in its frame - inset and lower height so the award text below (and the certificate itself) is fully visible, high contrast, and not obscured or clipped by the jagged edges. */
@@ -1768,6 +1926,29 @@
             <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 360px; border: 5px solid #000000; box-shadow: 10px 10px 0 #000000; margin: 8px auto 4px; display: block;" />
             <p style="color: #222222; font-weight: 700; margin-top: 6px; line-height: 1.45; font-size: 0.95rem;">Track A • Awarded to Kathy • April 27, 2026</p>
           </section>
+
+          <!-- Deco layer for collage elements in the empty spaces around the frames, following the reference style. All content (images/text) remains fully visible and uncut. -->
+          <div class="deco-layer" aria-hidden="true">
+            <!-- Boxing glove near Rebel BJJ -->
+            <div class="deco deco-glove" style="top: -8%; left: 8%; transform: rotate(-20deg);"></div>
+            <!-- Star -->
+            <div class="deco deco-star" style="top: 5%; left: 42%; transform: rotate(15deg);"></div>
+            <!-- Dagger between the two top frames -->
+            <div class="deco deco-dagger" style="top: 12%; left: 48%; transform: rotate(25deg);"></div>
+            <!-- Sword crossing near Woman Up -->
+            <div class="deco deco-sword" style="top: 8%; right: 5%; transform: rotate(-10deg);"></div>
+            <!-- Chain on left side -->
+            <div class="deco deco-chain" style="top: 35%; left: -6%; transform: rotate(5deg);"></div>
+            <!-- Gun pointing at bottom frame -->
+            <div class="deco deco-gun" style="top: 55%; right: 3%; transform: rotate(30deg);"></div>
+            <!-- Star in upper space -->
+            <div class="deco deco-star" style="top: 22%; right: 38%; transform: rotate(-30deg);"></div>
+            <!-- Treasure chest below FemAI -->
+            <div class="deco deco-chest" style="bottom: -5%; left: 25%; transform: rotate(-5deg);"></div>
+            <!-- Another star and chain for richness -->
+            <div class="deco deco-star" style="bottom: 15%; right: 10%; transform: rotate(20deg);"></div>
+            <div class="deco deco-chain" style="bottom: 8%; left: 55%; transform: rotate(-15deg);"></div>
+          </div>
         </div>
       </section>
 
