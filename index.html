@@ -896,37 +896,34 @@
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           align-items: start;
+          gap: 6px; /* tighter to pack and fill space */
         }
 
-        /* Rebel BJJ frame - medium, tilted left, left side.
-           NO clip-path on the card - the banner image and all text below are 100% visible, not cut or covered.
-           Jagged/torn artistic effect is only on the white border + box-shadow layers. */
+        /* Rebel BJJ frame - wider to fill left, slight tilt. */
         .hacker-grid .system-card:nth-child(1) {
-          grid-column: 1 / span 5;
+          grid-column: 1 / span 6;
           grid-row: 1;
           width: 100%;
-          transform: rotate(-5deg);
+          transform: rotate(-4deg);
         }
 
-        /* Woman Up frame - different size, tilted right, right side.
-           NO clip-path or negative margin - banner and text fully visible, no covering or cutting.
-           Artistic jagged effect only on the border. */
+        /* Woman Up frame - overlaps more with left for collage fill, covers middle upper. */
         .hacker-grid .system-card:nth-child(2) {
-          grid-column: 6 / span 6;
+          grid-column: 5 / span 8;
           grid-row: 1;
           width: 100%;
-          transform: rotate(4deg);
+          transform: rotate(3deg);
+          margin-left: -30px; /* overlap to reduce empty middle */
         }
 
-        /* FemAI award frame - larger, different proportion, different tilt, on second row as the "big prize".
-           NO clip-path or negative top margin - certificate and text fully visible, no cutting or covering.
-           All jagged art only on the white border + shadows. */
+        /* FemAI award frame - full width to fill bottom and middle space, tucked up, larger effective size. */
         .hacker-grid .system-card:nth-child(3) {
-          grid-column: 2 / span 9;
+          grid-column: 1 / span 12;
           grid-row: 2;
           width: 100%;
-          transform: rotate(-2.5deg);
-          padding: 8px 8px 28px;
+          transform: rotate(-1.5deg);
+          margin-top: -40px; /* pull up to fill the center gap between top cards */
+          padding: 10px 10px 22px;
         }
       }
 
@@ -952,9 +949,9 @@
 
       /* The certificate in its frame - inset and lower height so the award text below (and the certificate itself) is fully visible, high contrast, and not obscured or clipped by the jagged edges. */
       .hacker-grid .system-card:nth-child(3) img {
-        width: 88%;
-        max-height: 170px;
-        margin: 4px auto 8px;
+        width: 95%;
+        max-height: 240px; /* larger cert to make the FemAI frame feel substantial and fill vertical space */
+        margin: 6px auto 6px;
       }
 
       /* Make the yellow system-link look like a small sticker on the dark frame */
