@@ -771,7 +771,8 @@
         background: #f7f7f7;
         border: 4px solid #000000;
         box-shadow: 8px 8px 0 #000000;
-        clip-path: polygon(0 0, 100% 0, 100% 90%, 94% 100%, 0 100%);
+        /* less aggressive clip on right to prevent banner right edge from being cut */
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 98% 100%, 0 100%);
       }
 
       .system-card:nth-child(odd) {
@@ -860,11 +861,14 @@
       /* New for hackathon banners and awards - Persona 5 rebellious punk vibe */
       .banner {
         width: 100%;
+        max-width: 100%;
         border: 4px solid #000000;
         box-shadow: 6px 6px 0 #000000;
         margin-bottom: 12px;
         display: block;
-        clip-path: polygon(0 0, 100% 0, 100% 95%, 95% 100%, 0 100%);
+        box-sizing: border-box;
+        /* reduced clip to avoid chopping right side of banner images */
+        clip-path: polygon(0 0, 100% 0, 100% 97%, 98% 100%, 0 100%);
       }
 
       .award-card {
@@ -1621,8 +1625,8 @@
           <strong>黑客松 & AI 实践</strong>
         </div>
         <div class="system-card award-card">
-          <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.3rem;">FemAI 1.0 最佳实践奖</h3>
-          <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 520px; border: 4px solid #000000; box-shadow: 8px 8px 0 #000000; margin: 8px auto; display: block;" />
+          <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.1rem;">FemAI 1.0 最佳实践奖</h3>
+          <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 380px; border: 4px solid #000000; box-shadow: 8px 8px 0 #000000; margin: 8px auto; display: block;" />
           <p style="color: #333333; font-weight: 700; margin-top: 8px; line-height: 1.5;">Track A • Awarded to Kathy • April 27, 2026</p>
         </div>
       </section>
