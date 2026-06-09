@@ -796,6 +796,9 @@
         width: calc(100% + 18px);
         margin-right: -9px;
         margin-bottom: 6px;
+        height: 210px;           /* force similar displayed height so the two banners align visually */
+        object-fit: contain;     /* show the entire graphic without cropping or distortion */
+        object-position: center; /* center the content (important right-edge text still benefits from the bleed) */
       }
 
       /* FemAI award card (3rd frame): full-width trophy panel below the two projects.
