@@ -778,8 +778,16 @@
       /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible.
          Use dedicated .hacker-grid so the original 4 system cards keep their original padding/clip strength. */
       .hacker-grid .system-card {
-        padding: 14px 10px;
-        clip-path: polygon(0 0, 100% 0, 100% 98%, 99.5% 100%, 0 100%);
+        padding: 12px 6px; /* very tight on right to stop clipping the banner text */
+        clip-path: polygon(0 0, 100% 0, 100% 99%, 99.7% 100%, 0 100%);
+      }
+
+      /* Pull the Woman Up / Rebel BJJ banner images slightly outside the card's right clip/border
+         so the far-right text (e.g. “战斗”) is never cut off, even with the rotate tilt. */
+      .hacker-grid .banner {
+        width: calc(100% + 10px);
+        margin-right: -5px;
+        margin-bottom: 8px;
       }
 
       .system-card:nth-child(odd) {
