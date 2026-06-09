@@ -842,124 +842,55 @@
         position: absolute;
         inset: 0;
         pointer-events: none;
-        z-index: 0;
+        z-index: 2;
       }
 
       .deco {
         position: absolute;
         background: #000000;
-        border: 3px solid #ffffff;
+        border: 4px solid #ffffff;
         color: #ffffff;
-        font-size: 20px;
-        width: 28px;
-        height: 28px;
+        font-size: 28px;
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 2px 2px 0 #000000;
-        clip-path: polygon(10% 0%, 90% 5%, 95% 85%, 5% 90%);
-        z-index: 1;
-        text-shadow: 1px 1px 0 #000000;
+        box-shadow: 3px 3px 0 #000000;
+        clip-path: none; /* no clip so the emoji/shape is fully visible and recognizable */
+        z-index: 3;
+        text-shadow: 2px 2px 0 #000000;
         line-height: 1;
+        text-align: center;
       }
 
       .deco-glove {
         background: #c8102e;
-        font-size: 22px;
-        clip-path: polygon(20% 5%, 80% 8%, 85% 75%, 25% 80%);
+        font-size: 32px;
       }
 
       .deco-star {
-        font-size: 18px;
-        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        font-size: 30px;
       }
 
       .deco-dagger {
-        width: 8px;
-        height: 36px;
-        background: #000000;
-        border: 2px solid #ffffff;
-        clip-path: none;
-        /* add tip with pseudo */
-      }
-
-      .deco-dagger::after {
-        content: '';
-        position: absolute;
-        top: -8px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-bottom: 10px solid #ffffff;
-        width: 0;
-        height: 0;
+        font-size: 28px;
       }
 
       .deco-sword {
-        width: 10px;
-        height: 42px;
-        background: #000000;
-        border: 2px solid #ffffff;
-        clip-path: none;
-      }
-
-      .deco-sword::before {
-        content: '';
-        position: absolute;
-        top: -6px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-bottom: 8px solid #ffffff;
+        font-size: 28px;
       }
 
       .deco-gun {
-        width: 38px;
-        height: 14px;
-        background: #000000;
-        border: 2px solid #ffffff;
-        clip-path: none;
-      }
-
-      .deco-gun::after {
-        content: '';
-        position: absolute;
-        right: -6px;
-        top: 2px;
-        width: 0;
-        height: 0;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 8px solid #ffffff;
+        font-size: 26px;
       }
 
       .deco-chain {
-        width: 22px;
-        height: 8px;
-        background: transparent;
-        border: 2px dashed #ffffff;
-        clip-path: none;
+        font-size: 26px;
       }
 
       .deco-chest {
-        width: 28px;
-        height: 20px;
-        background: #000000;
-        border: 2px solid #ffffff;
-        clip-path: none;
-      }
-
-      .deco-chest::before {
-        content: '';
-        position: absolute;
-        top: -4px;
-        left: 4px;
-        width: 20px;
-        height: 6px;
-        background: #000000;
-        border: 2px solid #ffffff;
+        font-size: 26px;
       }
 
       /* Make inner text pop on the dark frame */
@@ -1924,30 +1855,30 @@
             <div class="meta"><b>🏆</b><span>3️⃣ HERSTORY</span></div>
             <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.05rem;">FemAI 1.0 最佳实践奖</h3>
             <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 360px; border: 5px solid #000000; box-shadow: 10px 10px 0 #000000; margin: 8px auto 4px; display: block;" />
-            <p style="color: #222222; font-weight: 700; margin-top: 6px; line-height: 1.45; font-size: 0.95rem;">Track A • Awarded to Kathy • April 27, 2026</p>
+            <p style="color: #ffffff; font-weight: 700; margin-top: 6px; line-height: 1.45; font-size: 0.95rem;">Track A • Awarded to Kathy • April 27, 2026</p>
           </section>
 
           <!-- Deco layer for collage elements in the empty spaces around the frames, following the reference style. All content (images/text) remains fully visible and uncut. -->
           <div class="deco-layer" aria-hidden="true">
             <!-- Boxing glove near Rebel BJJ -->
-            <div class="deco deco-glove" style="top: -8%; left: 8%; transform: rotate(-20deg);"></div>
+            <div class="deco deco-glove" style="top: -10%; left: 5%; transform: rotate(-25deg);">🥊</div>
             <!-- Star -->
-            <div class="deco deco-star" style="top: 5%; left: 42%; transform: rotate(15deg);"></div>
+            <div class="deco deco-star" style="top: 3%; left: 40%; transform: rotate(12deg);">★</div>
             <!-- Dagger between the two top frames -->
-            <div class="deco deco-dagger" style="top: 12%; left: 48%; transform: rotate(25deg);"></div>
+            <div class="deco deco-dagger" style="top: 10%; left: 47%; transform: rotate(28deg);">🗡️</div>
             <!-- Sword crossing near Woman Up -->
-            <div class="deco deco-sword" style="top: 8%; right: 5%; transform: rotate(-10deg);"></div>
+            <div class="deco deco-sword" style="top: 5%; right: 4%; transform: rotate(-12deg);">⚔️</div>
             <!-- Chain on left side -->
-            <div class="deco deco-chain" style="top: 35%; left: -6%; transform: rotate(5deg);"></div>
+            <div class="deco deco-chain" style="top: 32%; left: -8%; transform: rotate(8deg);">⛓️</div>
             <!-- Gun pointing at bottom frame -->
-            <div class="deco deco-gun" style="top: 55%; right: 3%; transform: rotate(30deg);"></div>
+            <div class="deco deco-gun" style="top: 52%; right: 2%; transform: rotate(35deg);">🔫</div>
             <!-- Star in upper space -->
-            <div class="deco deco-star" style="top: 22%; right: 38%; transform: rotate(-30deg);"></div>
+            <div class="deco deco-star" style="top: 20%; right: 36%; transform: rotate(-25deg);">★</div>
             <!-- Treasure chest below FemAI -->
-            <div class="deco deco-chest" style="bottom: -5%; left: 25%; transform: rotate(-5deg);"></div>
-            <!-- Another star and chain for richness -->
-            <div class="deco deco-star" style="bottom: 15%; right: 10%; transform: rotate(20deg);"></div>
-            <div class="deco deco-chain" style="bottom: 8%; left: 55%; transform: rotate(-15deg);"></div>
+            <div class="deco deco-chest" style="bottom: -6%; left: 22%; transform: rotate(-8deg);">📦</div>
+            <!-- Another star and chain for richness in empty spaces -->
+            <div class="deco deco-star" style="bottom: 12%; right: 8%; transform: rotate(18deg);">★</div>
+            <div class="deco deco-chain" style="bottom: 5%; left: 52%; transform: rotate(-18deg);">⛓️</div>
           </div>
         </div>
       </section>
