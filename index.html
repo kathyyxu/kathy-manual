@@ -778,18 +778,53 @@
       /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible.
          Use dedicated .hacker-grid so the original 4 system cards keep their original padding/clip strength. */
       .hacker-grid .system-card {
-        padding: 10px 2px 10px 10px; /* almost zero right padding so the banner's right edge isn't eaten by border+padding */
-        /* Full right side (no clip cut on the right at all) so “战斗” and any other right-edge text/graphics are 100% visible.
-           Only minimal torn corner at very bottom if needed; the banner's own border+shadow provides the punk edge. */
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
+        padding: 12px 8px 14px 12px;
+        /* Base torn edge for the collage — the two banner cards override the right side for full visibility;
+           the award card uses a custom jagged shattered-glass clip (see inline style) for violent punk variety. */
+        clip-path: polygon(2% 4%, 98% 2%, 96% 48%, 100% 52%, 93% 97%, 5% 94%, 7% 50%, 0% 30%);
       }
 
-      /* Aggressive bleed on the banner images themselves: make them wider than the card and shift right
-         so the far-right content (“战斗” etc.) clears the card's 4px border + any residual clip/rotate. */
+      /* The two project banners need extra right bleed so their full graphics (including edge text) read completely.
+         The award card keeps a more aggressive irregular clip to feel like a hand-torn trophy page. */
+      .hacker-grid .system-card:nth-child(1),
+      .hacker-grid .system-card:nth-child(2) {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
+        padding: 10px 4px 12px 10px;
+      }
+
       .hacker-grid .banner {
         width: calc(100% + 18px);
         margin-right: -9px;
         margin-bottom: 6px;
+      }
+
+      /* === Three-frame harmony (rebel zine collage) === */
+      /* Black & white halftone dots + high-contrast red-black punk language across the three cards */
+      .hacker-grid .system-card {
+        background-color: #f4f4f4;
+        background-image:
+          radial-gradient(#111111 0.9px, transparent 1.1px),
+          radial-gradient(#111111 0.6px, transparent 0.8px);
+        background-size: 5px 5px, 3px 3px;
+        background-position: 0 0, 2.5px 2.5px;
+        /* subtle comic dot texture for the "大量黑白波点" rebellious zine feel */
+      }
+
+      /* The award (3rd) card is the "trophy panel" — full-width feature below the two launches on wide screens,
+         more dramatic jagged clip (shattered glass / lightning), centered heroic cert, matching red-black weight. */
+      .hacker-grid .system-card:nth-child(3) {
+        grid-column: 1 / -1;
+        padding: 16px 14px 18px;
+        text-align: center;
+        /* extra aggressive irregular clip for this one to feel like a prized, violently torn page */
+        clip-path: polygon(3% 2%, 97% 5%, 95% 38%, 100% 55%, 92% 96%, 6% 93%, 8% 48%, 1% 25%);
+      }
+
+      .hacker-grid .system-card:nth-child(3) img {
+        max-width: 360px;
+        border: 5px solid #000000;
+        box-shadow: 10px 10px 0 #000000;
+        margin: 8px auto 6px;
       }
 
       .system-card:nth-child(odd) {
@@ -888,10 +923,10 @@
         clip-path: none;
       }
 
+      /* .award-card base kept for any future standalone use, but inside .hacker-grid the nth-child(3) rules above take over for full rebel-zine harmony */ 
       .award-card {
         min-height: auto;
         text-align: center;
-        padding: 14px 16px; /* tighter than regular cards to make FemAI column smaller */
       }
 
       .podcast-grid {
@@ -1622,6 +1657,7 @@
           <strong data-i18n="hacker.title">💻 黑客松玩家</strong>
         </div>
         <div class="systems hacker-grid">
+          <!-- 1. Rebel BJJ -->
           <section class="system-card">
             <img src="./assets/rebel-bjj-banner.png" alt="REBEL BJJ Banner" class="banner" />
             <div class="meta"><b>1️⃣</b><span data-i18n="hacker.card1.meta">独立开发「Rebel BJJ」</span></div>
@@ -1629,6 +1665,8 @@
             <p data-i18n="hacker.card1.award" style="color:#111111;">🏆 Dev3pack 全球黑客松中国区第 4 名</p>
             <a class="system-link" href="https://phantom-thief-s-mat-main.vercel.app/" target="_blank" rel="noopener noreferrer">查看 Rebel BJJ 项目 ↗</a>
           </section>
+
+          <!-- 2. Woman Up -->
           <section class="system-card">
             <img src="./assets/woman-up-banner.png" alt="WOMAN UP! Banner" class="banner" />
             <div class="meta"><b>2️⃣</b><span data-i18n="hacker.card2.meta">全栈开发「Woman Up」</span></div>
@@ -1636,18 +1674,14 @@
             <p data-i18n="hacker.card2.award" style="color:#111111;">🏆 她启 Z-Heronix黑客松观众人气奖</p>
             <a class="system-link" href="https://womanup-fight.vercel.app/" target="_blank" rel="noopener noreferrer">查看 Woman Up 项目 ↗</a>
           </section>
-        </div>
-      </section>
 
-      <section class="section reveal delay-3" id="herstory">
-        <div class="section-kicker">
-          <span>HERSTORY</span>
-          <strong>黑客松 & AI 实践</strong>
-        </div>
-        <div class="system-card award-card">
-          <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 4px; font-size: 0.98rem;">FemAI 1.0 最佳实践奖</h3>
-          <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 300px; border: 3px solid #000000; box-shadow: 6px 6px 0 #000000; margin: 4px auto; display: block;" />
-          <p style="color: #333333; font-weight: 700; margin-top: 4px; line-height: 1.4; font-size: 0.92rem;">Track A • Awarded to Kathy • April 27, 2026</p>
+          <!-- 3. FemAI HERSTORY Award — treated as the third peer "trophy frame" in the same rebel collage -->
+          <section class="system-card award-card">
+            <div class="meta"><b>🏆</b><span>3️⃣ HERSTORY</span></div>
+            <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.05rem;">FemAI 1.0 最佳实践奖</h3>
+            <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 340px; border: 4px solid #000000; box-shadow: 8px 8px 0 #000000; margin: 6px auto; display: block; clip-path: polygon(4% 3%, 96% 6%, 94% 42%, 99% 58%, 91% 96%, 7% 93%, 9% 52%, 2% 28%);" />
+            <p style="color: #222222; font-weight: 700; margin-top: 6px; line-height: 1.45; font-size: 0.95rem;">Track A • Awarded to Kathy • April 27, 2026</p>
+          </section>
         </div>
       </section>
 
