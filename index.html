@@ -778,14 +778,14 @@
       /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible.
          Use dedicated .hacker-grid so the original 4 system cards keep their original padding/clip strength. */
       .hacker-grid .system-card {
-        padding: 12px 8px 14px 12px;
-        /* Base torn edge for the collage — the two banner cards override the right side for full visibility;
-           the award card uses a custom jagged shattered-glass clip (see inline style) for violent punk variety. */
-        clip-path: polygon(2% 4%, 98% 2%, 96% 48%, 100% 52%, 93% 97%, 5% 94%, 7% 50%, 0% 30%);
+        padding: 14px 10px 16px 14px;
+        /* Clean, consistent mild torn edges across the three frames for punk zine harmony.
+           No dense halftone dots — they reduced clarity on banners and text. */
+        clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 0 100%);
+        background: #f7f7f7; /* clean background for best readability */
       }
 
-      /* The two project banners need extra right bleed so their full graphics (including edge text) read completely.
-         The award card keeps a more aggressive irregular clip to feel like a hand-torn trophy page. */
+      /* Project cards 1 & 2: full right side + bleed so the detailed banners stay 100% complete and crisp. */
       .hacker-grid .system-card:nth-child(1),
       .hacker-grid .system-card:nth-child(2) {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
@@ -798,33 +798,24 @@
         margin-bottom: 6px;
       }
 
-      /* === Three-frame harmony (rebel zine collage) === */
-      /* Black & white halftone dots + high-contrast red-black punk language across the three cards */
-      .hacker-grid .system-card {
-        background-color: #f4f4f4;
-        background-image:
-          radial-gradient(#111111 0.9px, transparent 1.1px),
-          radial-gradient(#111111 0.6px, transparent 0.8px);
-        background-size: 5px 5px, 3px 3px;
-        background-position: 0 0, 2.5px 2.5px;
-        /* subtle comic dot texture for the "大量黑白波点" rebellious zine feel */
-      }
-
-      /* The award (3rd) card is the "trophy panel" — full-width feature below the two launches on wide screens,
-         more dramatic jagged clip (shattered glass / lightning), centered heroic cert, matching red-black weight. */
+      /* FemAI award card (3rd frame): full-width trophy panel below the two projects.
+         The certificate itself must remain fully intact and clear — no clipping on the image, clean rectangular frame.
+         The outer card still carries subtle punk torn edges + heavy black border/shadow to match the group. */
       .hacker-grid .system-card:nth-child(3) {
         grid-column: 1 / -1;
-        padding: 16px 14px 18px;
+        padding: 18px 16px 22px;
         text-align: center;
-        /* extra aggressive irregular clip for this one to feel like a prized, violently torn page */
-        clip-path: polygon(3% 2%, 97% 5%, 95% 38%, 100% 55%, 92% 96%, 6% 93%, 8% 48%, 1% 25%);
+        clip-path: polygon(0 0, 100% 0, 100% 97%, 98.5% 100%, 0 100%); /* very gentle, non-destructive */
       }
 
       .hacker-grid .system-card:nth-child(3) img {
-        max-width: 360px;
+        width: 100%;
+        max-width: 380px;
         border: 5px solid #000000;
         box-shadow: 10px 10px 0 #000000;
-        margin: 8px auto 6px;
+        margin: 8px auto 4px;
+        display: block;
+        /* deliberately no clip-path or jagged edge on the certificate — full integrity and maximum clarity */
       }
 
       .system-card:nth-child(odd) {
@@ -1679,7 +1670,7 @@
           <section class="system-card award-card">
             <div class="meta"><b>🏆</b><span>3️⃣ HERSTORY</span></div>
             <h3 style="color: #e70012; text-transform: uppercase; margin-bottom: 8px; font-size: 1.05rem;">FemAI 1.0 最佳实践奖</h3>
-            <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 340px; border: 4px solid #000000; box-shadow: 8px 8px 0 #000000; margin: 6px auto; display: block; clip-path: polygon(4% 3%, 96% 6%, 94% 42%, 99% 58%, 91% 96%, 7% 93%, 9% 52%, 2% 28%);" />
+            <img src="./assets/femai-certificate.png" alt="FemAI 1.0 最佳实践奖 证书" style="width: 100%; max-width: 360px; border: 5px solid #000000; box-shadow: 10px 10px 0 #000000; margin: 8px auto 4px; display: block;" />
             <p style="color: #222222; font-weight: 700; margin-top: 6px; line-height: 1.45; font-size: 0.95rem;">Track A • Awarded to Kathy • April 27, 2026</p>
           </section>
         </div>
