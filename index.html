@@ -777,48 +777,135 @@
 
       /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible.
          Use dedicated .hacker-grid so the original 4 system cards keep their original padding/clip strength. */
+      /* =====================================================
+         PERSONA 5 REBEL COLLAGE FRAMES for the 3 hackathon cards
+         Sharp irregular torn edges, thick white borders on black,
+         different sizes, heavy tilts, high-contrast red/black/white.
+         The three frames are now "torn photo stickers" in a dynamic collage.
+         Sizes are intentionally inconsistent as requested.
+         ===================================================== */
+
+      .hacker-grid {
+        /* On large screens we use a 12-col grid for free collage placement */
+        gap: 14px;
+      }
+
       .hacker-grid .system-card {
-        padding: 14px 10px 16px 14px;
-        /* Clean, consistent mild torn edges across the three frames for punk zine harmony.
-           No dense halftone dots — they reduced clarity on banners and text. */
-        clip-path: polygon(0 0, 100% 0, 100% 96%, 98% 100%, 0 100%);
-        background: #f7f7f7; /* clean background for best readability */
+        /* Core P5 frame look: black "photo" area, thick white border, jagged torn outer edge */
+        background: #0d0d0d;
+        color: #fff;
+        border: 9px solid #fff;
+        box-shadow: 
+          5px 5px 0 #000,
+          -2px -2px 0 #fff,
+          0 0 0 3px #000; /* layered sticker depth */
+        padding: 6px;
+        /* The clip-path creates the sharp, irregular, torn-paper / shattered look from the reference */
+        clip-path: polygon(3% 7%, 14% 2%, 27% 9%, 39% 3%, 52% 8%, 64% 2%, 77% 10%, 89% 4%, 96% 15%, 93% 32%, 99% 47%, 92% 61%, 98% 74%, 87% 89%, 73% 85%, 58% 94%, 42% 86%, 27% 95%, 11% 88%, 5% 72%, 8% 55%, 2% 38%, 9% 18%);
+        transform-origin: center;
+        transition: transform .2s ease;
       }
 
-      /* Project cards 1 & 2: full right side + bleed so the detailed banners stay 100% complete and crisp. */
-      .hacker-grid .system-card:nth-child(1),
-      .hacker-grid .system-card:nth-child(2) {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
-        padding: 10px 4px 12px 10px;
+      /* Make inner text pop on the dark frame */
+      .hacker-grid .system-card h3 {
+        color: #e70012;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        margin: 4px 0 6px;
+      }
+      .hacker-grid .system-card p {
+        color: #ccc;
+        font-size: 0.82rem;
+        line-height: 1.3;
+      }
+      .hacker-grid .system-card .meta {
+        color: #fff;
+        font-size: 0.7rem;
+        margin-bottom: 4px;
       }
 
-      .hacker-grid .banner {
-        width: calc(100% + 18px);
-        margin-right: -9px;
-        margin-bottom: 6px;
-        height: 210px;           /* force similar displayed height so the two banners align visually */
-        object-fit: contain;     /* show the entire graphic without cropping or distortion */
-        object-position: center; /* center the content (important right-edge text still benefits from the bleed) */
-      }
-
-      /* FemAI award card (3rd frame): full-width trophy panel below the two projects.
-         The certificate itself must remain fully intact and clear — no clipping on the image, clean rectangular frame.
-         The outer card still carries subtle punk torn edges + heavy black border/shadow to match the group. */
-      .hacker-grid .system-card:nth-child(3) {
-        grid-column: 1 / -1;
-        padding: 18px 16px 22px;
-        text-align: center;
-        clip-path: polygon(0 0, 100% 0, 100% 97%, 98.5% 100%, 0 100%); /* very gentle, non-destructive */
-      }
-
-      .hacker-grid .system-card:nth-child(3) img {
+      /* The main visual (banner or certificate) fills the black "photo" area with a thin inner frame */
+      .hacker-grid .system-card img {
         width: 100%;
-        max-width: 380px;
-        border: 5px solid #000000;
-        box-shadow: 10px 10px 0 #000000;
-        margin: 8px auto 4px;
         display: block;
-        /* deliberately no clip-path or jagged edge on the certificate — full integrity and maximum clarity */
+        border: 2px solid #000;
+        box-shadow: 0 0 0 1px #fff;
+        background: #000;
+      }
+
+      /* === Individual frame sizes, tilts and placements (inconsistent as requested) === */
+      /* Desktop collage layout using 12-column grid for dynamic overlapping feel */
+      @media (min-width: 980px) {
+        .hacker-grid {
+          display: grid;
+          grid-template-columns: repeat(12, 1fr);
+          align-items: start;
+        }
+
+        /* Rebel BJJ frame - medium, tilted left, left side */
+        .hacker-grid .system-card:nth-child(1) {
+          grid-column: 1 / span 5;
+          grid-row: 1;
+          width: 100%;
+          transform: rotate(-5deg);
+          clip-path: polygon(4% 6%, 13% 2%, 25% 8%, 37% 1%, 50% 7%, 62% 3%, 75% 9%, 88% 2%, 95% 14%, 91% 30%, 98% 45%, 90% 60%, 96% 73%, 84% 88%, 68% 84%, 52% 93%, 35% 85%, 20% 94%, 6% 80%, 3% 62%, 10% 45%, 2% 28%, 8% 12%);
+          /* slightly different jagged for variety */
+        }
+
+        /* Woman Up frame - different size, tilted right, right side, slightly overlapping vibe */
+        .hacker-grid .system-card:nth-child(2) {
+          grid-column: 6 / span 6;
+          grid-row: 1;
+          width: 100%;
+          transform: rotate(4deg);
+          margin-left: -12px; /* slight overlap/collage feel */
+          clip-path: polygon(5% 5%, 15% 1%, 28% 7%, 40% 2%, 53% 6%, 65% 1%, 78% 8%, 91% 3%, 97% 16%, 94% 33%, 100% 48%, 93% 63%, 97% 76%, 86% 91%, 71% 87%, 55% 95%, 38% 88%, 23% 96%, 7% 82%, 4% 60%, 9% 42%, 1% 25%, 7% 10%);
+        }
+
+        /* FemAI award frame - larger, different proportion, different tilt, on second row as the "big prize" */
+        .hacker-grid .system-card:nth-child(3) {
+          grid-column: 2 / span 9;
+          grid-row: 2;
+          width: 100%;
+          transform: rotate(-2.5deg);
+          margin-top: -18px; /* tuck under for collage overlap */
+          padding: 8px;
+          clip-path: polygon(3% 8%, 12% 2%, 24% 9%, 36% 3%, 49% 8%, 61% 2%, 74% 10%, 87% 4%, 95% 17%, 92% 35%, 99% 50%, 91% 64%, 96% 78%, 83% 90%, 67% 86%, 50% 95%, 33% 87%, 18% 94%, 5% 79%, 2% 58%, 8% 40%, 1% 22%, 10% 7%);
+        }
+      }
+
+      /* Mobile: stack with individual tilts and jagged frames, still very P5 sticker-like */
+      @media (max-width: 979px) {
+        .hacker-grid .system-card:nth-child(1) { transform: rotate(-3deg); }
+        .hacker-grid .system-card:nth-child(2) { transform: rotate(3deg); }
+        .hacker-grid .system-card:nth-child(3) { transform: rotate(-1.5deg); }
+      }
+
+      /* Banner images inside the frames - full "photo" treatment, no extra bleed needed anymore */
+      .hacker-grid .banner {
+        width: 100%;
+        margin: 0;
+        height: auto;
+        max-height: 260px; /* cap so the frame controls the visual weight */
+        object-fit: contain;
+        object-position: center;
+      }
+
+      /* The certificate in its frame - large and clear, the "hero photo" of the third frame */
+      .hacker-grid .system-card:nth-child(3) img {
+        max-height: 320px;
+        margin: 4px auto;
+      }
+
+      /* Make the yellow system-link look like a small sticker on the dark frame */
+      .hacker-grid .system-link {
+        background: #ffe500;
+        color: #000;
+        border: 2px solid #fff;
+        box-shadow: 2px 2px 0 #000;
+        font-size: 0.7rem;
+        padding: 4px 6px;
+        margin-top: 6px;
       }
 
       .system-card:nth-child(odd) {
