@@ -64,9 +64,9 @@
       }
 
       .page {
-        width: min(1400px, calc(100vw - 20px));
+        width: min(var(--max), calc(100vw - 32px));
         margin: 0 auto;
-        padding: 10px 0 60px;
+        padding: 20px 0 90px;
         position: relative;
       }
 
@@ -143,41 +143,42 @@
       .lang-switcher {
         display: inline-flex;
         align-items: center;
-        gap: 2px;
-        padding: 4px;
-        background: #e70012;
-        border: 3px solid #000000;
-        box-shadow: 4px 4px 0 #000000;
+        gap: 6px;
+        padding: 6px;
+        background: #000000;
+        border: 3px solid #ffffff;
+        box-shadow: 6px 6px 0 var(--accent);
+        transform: skew(12deg) rotate(-3deg);
       }
 
       .lang-btn {
-        min-width: 36px;
-        padding: 6px 8px;
+        min-width: 42px;
+        padding: 8px 10px;
         border: 2px solid #000000;
         background: #ffffff;
         color: #000000;
         font-family: "Arial Black", sans-serif;
-        font-size: 0.68rem;
-        letter-spacing: 0.04em;
+        font-size: 0.72rem;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         cursor: pointer;
         transition: transform 160ms ease, background 160ms ease, color 160ms ease;
       }
 
       .lang-btn:hover {
-        transform: translate(-1px, -1px);
+        transform: translate(-2px, -2px);
       }
 
       .lang-btn.active {
         background: var(--accent);
         color: #ffffff;
-        box-shadow: 3px 3px 0 #ffffff;
+        box-shadow: 4px 4px 0 #ffffff;
       }
 
       .hero {
         position: relative;
         overflow: visible;
-        padding: 28px 36px;
+        padding: 42px;
         border-radius: 0;
         background:
           linear-gradient(160deg, #ffffff 0 62%, #e70012 62% 100%);
@@ -234,8 +235,8 @@
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 16px;
+        grid-template-columns: 0.92fr 1.34fr;
+        gap: 10px;
         align-items: end;
         position: relative;
         z-index: 1;
@@ -260,7 +261,7 @@
         margin-top: 18px;
         max-width: 10ch;
         font-family: "Arial Black", "Impact", sans-serif;
-        font-size: clamp(3.8rem, 9.5vw, 7.5rem);
+        font-size: clamp(3.3rem, 8.5vw, 7rem);
         line-height: 0.88;
         letter-spacing: -0.08em;
         text-transform: uppercase;
