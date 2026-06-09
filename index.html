@@ -771,8 +771,14 @@
         background: #f7f7f7;
         border: 4px solid #000000;
         box-shadow: 8px 8px 0 #000000;
-        /* milder clip so banners (esp. Woman Up) show full right edge while keeping punk torn feel */
-        clip-path: polygon(0 0, 100% 0, 100% 94%, 98.5% 100%, 0 100%);
+        /* further relaxed right-side clip (and specific override below for banner cards) so Woman Up banner text on far right is no longer chopped */
+        clip-path: polygon(0 0, 100% 0, 100% 96%, 99% 100%, 0 100%);
+      }
+
+      /* Banner cards (Rebel BJJ + Woman Up) need extra room on right so the full banner graphics (incl. text) are visible */
+      .systems .system-card {
+        padding: 14px 10px;
+        clip-path: polygon(0 0, 100% 0, 100% 98%, 99.5% 100%, 0 100%);
       }
 
       .system-card:nth-child(odd) {
@@ -1610,12 +1616,14 @@
             <div class="meta"><b>1️⃣</b><span data-i18n="hacker.card1.meta">独立开发「Rebel BJJ」</span></div>
             <h3 data-i18n="hacker.card1.title" style="color:#111111;">为女性柔术练习者打造的 AI + Web3 训练地图</h3>
             <p data-i18n="hacker.card1.award" style="color:#111111;">🏆 Dev3pack 全球黑客松中国区第 4 名</p>
+            <a class="system-link" href="https://phantom-thief-s-mat-main.vercel.app/" target="_blank" rel="noopener noreferrer">查看 Rebel BJJ 项目 ↗</a>
           </section>
           <section class="system-card">
             <img src="./assets/woman-up-banner.png" alt="WOMAN UP! Banner" class="banner" />
             <div class="meta"><b>2️⃣</b><span data-i18n="hacker.card2.meta">全栈开发「Woman Up」</span></div>
             <h3 data-i18n="hacker.card2.title" style="color:#111111;">格斗科普+生存技能科普+双人游戏，让小事堆积前被接住</h3>
             <p data-i18n="hacker.card2.award" style="color:#111111;">🏆 她启 Z-Heronix黑客松观众人气奖</p>
+            <a class="system-link" href="https://womanup-fight.vercel.app/" target="_blank" rel="noopener noreferrer">查看 Woman Up 项目 ↗</a>
           </section>
         </div>
       </section>
