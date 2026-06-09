@@ -1332,12 +1332,20 @@
         }
 
         .photo-grid {
-          gap: 12px;
-          padding: 0 0 10px;
+          grid-template-columns: 1fr; /* each Polaroid full single row on mobile for much larger size */
+          gap: 16px;
+          padding: 0 8px 12px;
         }
 
         .polaroid {
-          padding: 8px; /* slightly more frame presence while letting the photo area grow */
+          padding: 10px; /* thicker frame to match larger cards */
+          max-width: 92%; /* slight breathing room, centered feel */
+          margin: 0 auto;
+        }
+
+        .polaroid img {
+          width: 100%;
+          height: auto;
         }
 
         .hero,
@@ -1372,11 +1380,6 @@
         .polaroid,
         .marquee {
           transform: none;
-        }
-
-        .photo-grid {
-          gap: 10px;
-          padding: 6px 4px 14px;
         }
 
         .stats-row {
