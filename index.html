@@ -915,14 +915,14 @@
           transform: rotate(2deg);
         }
 
-        /* FemAI award frame - wide to match the "size" feel of the top ones, centered-ish on row 2, gentle tuck to fill middle without too much overlap or small appearance. */
+        /* FemAI award frame - enlarged to full width (span 12) and positioned to extend further right, covering the large empty background space on the right of the current layout. Makes the frame substantially larger to fill the picture, while keeping collage overlap with top via tuck. */
         .hacker-grid .system-card:nth-child(3) {
-          grid-column: 2 / span 10;
+          grid-column: 1 / span 12;
           grid-row: 2;
           width: 100%;
           transform: rotate(-1deg);
-          margin-top: -25px; /* moderate tuck to connect visually and fill center gap */
-          padding: 10px 10px 20px;
+          margin-top: -30px; /* slightly more tuck to fill vertical middle and connect the collage */
+          padding: 10px 10px 18px;
         }
       }
 
@@ -948,8 +948,10 @@
 
       /* The certificate in its frame - inset and lower height so the award text below (and the certificate itself) is fully visible, high contrast, and not obscured or clipped by the jagged edges. */
       .hacker-grid .system-card:nth-child(3) img {
-        width: 95%;
-        max-height: 240px; /* larger cert to make the FemAI frame feel substantial and fill vertical space */
+        max-width: 92%;
+        max-height: 280px; /* enlarged further in the now full-width frame to keep the cert prominent and the overall FemAI "框" substantial, covering more of the right empty background */
+        width: auto;
+        height: auto;
         margin: 6px auto 6px;
       }
 
