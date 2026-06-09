@@ -799,7 +799,7 @@
           5px 5px 0 #000,
           -2px -2px 0 #fff,
           0 0 0 3px #000; /* layered sticker depth */
-        padding: 8px 8px 26px; /* more bottom padding to protect the multi-line text */
+        padding: 8px 8px 32px; /* generous bottom padding so the text block has plenty of room in the safe lower rectangle of the frame */
         /* The clip-path creates the sharp, irregular, torn-paper / shattered look from the reference.
            Bottom is deliberately flatter/higher (y >= 94-97%) to protect the text from being cut. */
         clip-path: polygon(2% 5%, 10% 1%, 20% 6%, 30% 2%, 42% 7%, 55% 1%, 68% 6%, 80% 2%, 92% 8%, 97% 18%, 95% 35%, 99% 52%, 94% 68%, 98% 82%, 92% 95%, 75% 97%, 55% 94%, 35% 97%, 18% 95%, 5% 82%, 2% 60%, 6% 40%, 1% 22%, 8% 10%);
@@ -813,16 +813,19 @@
         text-transform: uppercase;
         font-size: 1.0rem;
         margin: 4px 0 6px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6);
       }
       .hacker-grid .system-card p {
-        color: #ddd;
+        color: #eee;
         font-size: 0.88rem;
         line-height: 1.35;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6);
       }
       .hacker-grid .system-card .meta {
         color: #fff;
         font-size: 0.75rem;
         margin-bottom: 4px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.6);
       }
 
       /* The main visual (banner or certificate) fills the black "photo" area with a thin inner frame */
@@ -850,7 +853,7 @@
           width: 100%;
           transform: rotate(-5deg);
           /* Rebel BJJ frame — jagged top/sides, much flatter bottom for full text visibility */
-          clip-path: polygon(4% 6%, 13% 2%, 25% 8%, 37% 1%, 50% 7%, 62% 3%, 75% 9%, 88% 2%, 95% 14%, 91% 30%, 98% 45%, 90% 60%, 96% 73%, 84% 88%, 68% 84%, 52% 93%, 35% 85%, 20% 94%, 6% 98%, 5% 99%, 94% 99%, 93% 98%);
+          clip-path: polygon(4% 6%, 13% 2%, 25% 8%, 37% 1%, 50% 7%, 62% 3%, 75% 9%, 88% 2%, 95% 14%, 91% 30%, 98% 45%, 90% 60%, 8% 55%, 6% 99%, 94% 99%, 92% 55%, 84% 88%, 68% 84%, 52% 93%, 35% 85%, 20% 94%, 6% 98%, 5% 99%, 94% 99%, 93% 98%);
           /* Bottom points raised (y ~93-96%) so the two-line title + award line + link are never clipped by the jagged edge */
         }
 
@@ -862,7 +865,7 @@
           transform: rotate(4deg);
           margin-left: -12px; /* slight overlap/collage feel */
           /* Woman Up frame — similar, bottom generous for the long title + award + link */
-          clip-path: polygon(5% 5%, 15% 1%, 28% 7%, 40% 2%, 53% 6%, 65% 1%, 78% 8%, 91% 3%, 97% 16%, 94% 33%, 100% 48%, 93% 63%, 97% 76%, 86% 91%, 71% 87%, 55% 95%, 38% 88%, 23% 96%, 6% 98%, 5% 99%, 94% 99%, 93% 98%);
+          clip-path: polygon(5% 5%, 15% 1%, 28% 7%, 40% 2%, 53% 6%, 65% 1%, 78% 8%, 91% 3%, 97% 16%, 94% 33%, 100% 48%, 93% 63%, 8% 55%, 6% 99%, 94% 99%, 92% 55%, 86% 91%, 71% 87%, 55% 95%, 38% 88%, 23% 96%, 6% 98%, 5% 99%, 94% 99%, 93% 98%);
         }
 
         /* FemAI award frame - larger, different proportion, different tilt, on second row as the "big prize" */
@@ -872,9 +875,9 @@
           width: 100%;
           transform: rotate(-2.5deg);
           margin-top: -18px; /* tuck under for collage overlap */
-          padding: 8px;
+          padding: 8px 8px 28px; /* extra bottom padding for the award text to be fully visible inside the safe area */
           /* FemAI frame — bottom very flat/high so the award text (h3 + p) is fully inside the jagged border */
-          clip-path: polygon(3% 8%, 12% 2%, 24% 9%, 36% 3%, 49% 8%, 61% 2%, 74% 10%, 87% 4%, 95% 17%, 92% 35%, 99% 50%, 91% 64%, 96% 78%, 83% 90%, 67% 86%, 50% 95%, 33% 87%, 18% 94%, 6% 98%, 5% 99%, 94% 99%, 93% 98%);
+          clip-path: polygon(3% 8%, 12% 2%, 24% 9%, 36% 3%, 49% 8%, 61% 2%, 74% 10%, 87% 4%, 95% 17%, 92% 35%, 99% 50%, 91% 64%, 8% 55%, 6% 99%, 94% 99%, 92% 55%, 83% 90%, 67% 86%, 50% 95%, 33% 87%, 18% 94%, 6% 98%, 5% 99%, 94% 99%, 93% 98%);
         }
       }
 
@@ -888,19 +891,19 @@
       /* Banner images inside the frames - full "photo" treatment.
          Lower max-height to guarantee vertical room for the text block below (titles are long Chinese lines). */
       .hacker-grid .banner {
-        width: 94%;
-        margin: 0 auto 8px;
+        width: 92%;
+        margin: 0 auto 10px;
         height: auto;
-        max-height: 140px; /* lower to leave plenty of room for the text block below inside the safe bottom strip of the frame */
+        max-height: 125px; /* significantly lower so the image takes the upper "photo" area, leaving the lower safe rectangle for the text block (meta, title, award, link) to be fully visible and not cut or covered */
         object-fit: contain;
         object-position: center;
       }
 
-      /* The certificate in its frame - inset and lower height so the award text below is fully visible and not obscured or clipped. */
+      /* The certificate in its frame - inset and lower height so the award text below (and the certificate itself) is fully visible, high contrast, and not obscured or clipped by the jagged edges. */
       .hacker-grid .system-card:nth-child(3) img {
-        width: 90%;
-        max-height: 200px;
-        margin: 4px auto 6px;
+        width: 88%;
+        max-height: 170px;
+        margin: 4px auto 8px;
       }
 
       /* Make the yellow system-link look like a small sticker on the dark frame */
