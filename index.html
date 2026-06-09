@@ -896,33 +896,32 @@
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           align-items: start;
-          gap: 8px;
+          gap: 10px;
         }
 
-        /* Rebel BJJ frame - equal width to Woman Up, left side, mild tilt. */
+        /* Equal allocation: each frame ~1/3 width (span 4) for balanced sizes.
+           Collage with mild rotations and small overlaps to fill space dynamically without large empty middle. */
         .hacker-grid .system-card:nth-child(1) {
-          grid-column: 1 / span 6;
+          grid-column: 1 / span 4;
           grid-row: 1;
           width: 100%;
-          transform: rotate(-3deg);
+          transform: rotate(-4deg);
         }
 
-        /* Woman Up frame - equal width to Rebel, right side, mild tilt. */
         .hacker-grid .system-card:nth-child(2) {
-          grid-column: 7 / span 6;
+          grid-column: 5 / span 4;
           grid-row: 1;
           width: 100%;
-          transform: rotate(2deg);
+          transform: rotate(3deg);
+          margin-left: -12px; /* slight collage overlap */
         }
 
-        /* FemAI award frame - enlarged to full width (span 12) and positioned to extend further right, covering the large empty background space on the right of the current layout. Makes the frame substantially larger to fill the picture, while keeping collage overlap with top via tuck. */
         .hacker-grid .system-card:nth-child(3) {
-          grid-column: 1 / span 12;
-          grid-row: 2;
+          grid-column: 9 / span 4;
+          grid-row: 1;
           width: 100%;
-          transform: rotate(-1deg);
-          margin-top: -30px; /* slightly more tuck to fill vertical middle and connect the collage */
-          padding: 10px 10px 18px;
+          transform: rotate(-2deg);
+          margin-left: -12px; /* slight collage overlap to pack tightly */
         }
       }
 
@@ -948,11 +947,9 @@
 
       /* The certificate in its frame - inset and lower height so the award text below (and the certificate itself) is fully visible, high contrast, and not obscured or clipped by the jagged edges. */
       .hacker-grid .system-card:nth-child(3) img {
-        max-width: 92%;
-        max-height: 280px; /* enlarged further in the now full-width frame to keep the cert prominent and the overall FemAI "框" substantial, covering more of the right empty background */
-        width: auto;
-        height: auto;
-        margin: 6px auto 6px;
+        width: 100%;
+        max-height: 160px; /* scaled to match visual weight of top banners (~145px + text) in the now equal-width (span 4) frames; keeps cert fully visible and the three frames balanced in size */
+        margin: 4px auto 6px;
       }
 
       /* Make the yellow system-link look like a small sticker on the dark frame */
