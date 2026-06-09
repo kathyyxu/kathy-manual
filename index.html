@@ -896,34 +896,33 @@
           display: grid;
           grid-template-columns: repeat(12, 1fr);
           align-items: start;
-          gap: 6px; /* tighter to pack and fill space */
+          gap: 8px;
         }
 
-        /* Rebel BJJ frame - wider to fill left, slight tilt. */
+        /* Rebel BJJ frame - equal width to Woman Up, left side, mild tilt. */
         .hacker-grid .system-card:nth-child(1) {
           grid-column: 1 / span 6;
           grid-row: 1;
           width: 100%;
-          transform: rotate(-4deg);
+          transform: rotate(-3deg);
         }
 
-        /* Woman Up frame - overlaps more with left for collage fill, covers middle upper. */
+        /* Woman Up frame - equal width to Rebel, right side, mild tilt. */
         .hacker-grid .system-card:nth-child(2) {
-          grid-column: 5 / span 8;
+          grid-column: 7 / span 6;
           grid-row: 1;
           width: 100%;
-          transform: rotate(3deg);
-          margin-left: -30px; /* overlap to reduce empty middle */
+          transform: rotate(2deg);
         }
 
-        /* FemAI award frame - full width to fill bottom and middle space, tucked up, larger effective size. */
+        /* FemAI award frame - wide to match the "size" feel of the top ones, centered-ish on row 2, gentle tuck to fill middle without too much overlap or small appearance. */
         .hacker-grid .system-card:nth-child(3) {
-          grid-column: 1 / span 12;
+          grid-column: 2 / span 10;
           grid-row: 2;
           width: 100%;
-          transform: rotate(-1.5deg);
-          margin-top: -40px; /* pull up to fill the center gap between top cards */
-          padding: 10px 10px 22px;
+          transform: rotate(-1deg);
+          margin-top: -25px; /* moderate tuck to connect visually and fill center gap */
+          padding: 10px 10px 20px;
         }
       }
 
